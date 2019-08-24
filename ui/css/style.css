@@ -4092,6 +4092,21 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 /* End Contact Success and error Area css
 ============================================================================================ */
 /*---------------------------------------------------- */
