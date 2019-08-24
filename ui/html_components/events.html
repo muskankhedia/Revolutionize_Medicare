@@ -1,26 +1,30 @@
-<div class="container-fluid">
-  <div style="min-height: 400px;" data-ng-init="getAllEventsPatient()">
-      <table class="table">
-          <thead class="thead-light">
-            <tr>
-              <th>#</th>
-              <th>Disease / Problem</th>
-              <th>Duration of the disease</th>
-              <th>Medicine(s) Taken</th>
-              <th>Success</th>
-            </tr>
-          </thead>
-          <tbody data-ng-repeat="event in eventsArr; ">
-            <tr>
-                <th scope="row">{{$index + 1}}</th>
-                <td>{{ event.Event }}</td>
-                <td>{{ event.TimeSFO }}</td>
-                <td>{{ event.Medicine.join(',') }}</td>
-                <td>{{ event.Success }}</td>
-            </tr>
-          </tbody>
-      </table>
-  </div>
+<div class = "container-fluid">
+<div style="min-height: 400px;" data-ng-init="getAllEventsPatient()">
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>Disease / Problem</th>
+            <th>Duration of the disease</th>
+            <th>Medicine(s) Taken</th>
+            <th>Success</th>
+          </tr>
+        </thead>
+        <tbody data-ng-repeat="event in eventsArr; ">
+          <tr>
+              <td>{{$index + 1}}</td>
+              <td>{{ event.Event }}</td>
+              <td>{{ event.TimeSFO }}</td>
+              <td>{{ event.Medicine.join(',') }}</td>
+              <td>
+                  <input type="text" data-ng-model="event.Success" required>
+                  <button data-ng-click="updateSuccess(event.Success, event.EventID)">Done</button>
+              </td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
 
   <div class="add-events-style">
       <img src="../img/add.svg" alt="" srcset="" style="position: fixed; bottom: 1%; left: 20%; height: 8%;"

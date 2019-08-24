@@ -23,6 +23,7 @@ type Event struct {
 
 //EventBlock contains event details block as used in chain
 type EventBlock struct {
+	EventID int
 	PatientID int
 	Event     string
 	Medicine  []string
