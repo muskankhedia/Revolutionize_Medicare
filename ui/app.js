@@ -6,74 +6,74 @@ var global = {
     patientid: '1'
 };
 
-app.config(function($routeProvider,$locationProvider) {
+app.config(function($routeProvider, $locationProvider) {
     $routeProvider
-    .when("/login/",{
-        templateUrl:'./html_components/welcome.html',
-        controller:'loginController',
-        title:'Login | SignUp',
-    })
-    .when("/login",{
-        templateUrl:'./html_components/login.html',
-        controller:'loginController',
-        title:'Login | SignUp',
-    })
-    .when('/home', {
-        templateUrl:'./html_components/dashboard.html',
-        controller:'mainController',
-        title:'Dashboard',
-    })
-    .when('/', {
-        templateUrl:'./html_components/dashboard.html',
-        controller:'mainController',
-        title:'Dashboard',
-    })
-    .when('/events', {
-        templateUrl:'./html_components/events.html',
-        controller:'eventsController',
-        title:'Events',
-    })
-    .when('/addEvent', {
-        templateUrl:'./html_components/addEvent.html',
-        controller:'eventsController',
-        title:'Events',
-    })
-    .when('/login', {
-        templateUrl:'./html_components/login.html',
-        controller:'primaryController',
-        title:'Login',
-    })
-    .when('/signUp', {
-        templateUrl:'./html_components/signup.html',
-        controller:'primaryController',
-        title:'Login',
-    })
-    .when('/profile', {
-        templateUrl:'./html_components/profile.html',
-        controller:'profileController',
-        title:'Login',
-    })
+        .when("/login/", {
+            templateUrl: './html_components/welcome.html',
+            controller: 'loginController',
+            title: 'Login | SignUp',
+        })
+        .when("/login", {
+            templateUrl: './html_components/login.html',
+            controller: 'loginController',
+            title: 'Login | SignUp',
+        })
+        .when('/home', {
+            templateUrl: './html_components/dashboard.html',
+            controller: 'mainController',
+            title: 'Dashboard',
+        })
+        .when('/', {
+            templateUrl: './html_components/dashboard.html',
+            controller: 'mainController',
+            title: 'Dashboard',
+        })
+        .when('/events', {
+            templateUrl: './html_components/events.html',
+            controller: 'eventsController',
+            title: 'Events',
+        })
+        .when('/addEvent', {
+            templateUrl: './html_components/addEvent.html',
+            controller: 'eventsController',
+            title: 'Events',
+        })
+        .when('/login', {
+            templateUrl: './html_components/login.html',
+            controller: 'primaryController',
+            title: 'Login',
+        })
+        .when('/signUp', {
+            templateUrl: './html_components/signup.html',
+            controller: 'primaryController',
+            title: 'Login',
+        })
+        .when('/profile', {
+            templateUrl: './html_components/profile.html',
+            controller: 'profileController',
+            title: 'Login',
+        })
 })
 
-app.factory('eventsStore', function () {
-	let usageArray = [];
-	let updateUsageStore = function (x) {
+app.factory('eventsStore', function() {
+    let usageArray = [];
+    let updateUsageStore = function(x) {
         console.log('received as');
         console.log(x);
-		for (let i in x) {
+        for (let i in x) {
             usageArray.push(x[i]);
         }
-	};
-	let getUsageStore = function () {
-		return usageArray;
-	};
-	return {
-		updateEventsStore: updateUsageStore,
-		getEventsStore   : getUsageStore,
-	};
+    };
+    let getUsageStore = function() {
+        return usageArray;
+    };
+    return {
+        updateEventsStore: updateUsageStore,
+        getEventsStore: getUsageStore,
+    };
 });
 
-app.controller('primaryController', function($scope,$location,$rootScope,$http) {
+app.controller('primaryController', function($scope, $location, $rootScope, $http) {
     console.warn('primaryController called')
     $rootScope.showSidebar = false;
     $rootScope.settingsOption = false;
@@ -82,13 +82,13 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
     $scope.handleSignUp = function() {
         let data = 'name=' + $scope.signup.name + '&email=' + $scope.signup.email + '&age=' + $scope.signup.age + '&dob=' + $scope.signup.dob + '&bg=' + $scope.signup.bg + '&b=' + $scope.signup.b;
         console.log('data is', data);
-        $http(
-            {url: global.url+'/signup',
+        $http({
+            url: global.url + '/signup',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            data:data
+            data: data
         }).then(resp => {
             let res = resp.data;
             console.log('resp is ', res)
@@ -106,13 +106,13 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
     $scope.handleLogin = function() {
         let data = 'patientid=' + $scope.patientid;
         console.log('data is', data);
-        $http(
-            {url: global.url+'/login',
+        $http({
+            url: global.url + '/login',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            data:data
+            data: data
         }).then(resp => {
             let res = resp.data;
             console.log('res is ', res)
@@ -128,22 +128,22 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
     }
 });
 
-app.controller('mainController', function($scope,$location,$rootScope,$http) {
+app.controller('mainController', function($scope, $location, $rootScope, $http) {
     console.warn('assignee controller called')
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
     $scope.refreshStop = global.refresh;
     $scope.eventsArr = [];
     $scope.getAllEventsPatient = function() {
-        let data = 'patientid='+global.patientid;
+        let data = 'patientid=' + global.patientid;
         console.warn('fetching')
-        $http(
-            {url: global.url+'/allevents',
+        $http({
+            url: global.url + '/allevents',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            data:data
+            data: data
         }).then(resp => {
             res = resp.data;
             console.warn('thisss')
@@ -160,22 +160,22 @@ app.controller('mainController', function($scope,$location,$rootScope,$http) {
     };
 });
 
-app.controller('profileController', function($scope,$location,$rootScope,$http) {
+app.controller('profileController', function($scope, $location, $rootScope, $http) {
     console.warn('profile controller called')
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
     $scope.refreshStop = global.refresh;
     $scope.eventsArr = [];
     $scope.getProfile = function() {
-        let data = 'patientid='+global.patientid;
+        let data = 'patientid=' + global.patientid;
         console.warn('fetching')
-        $http(
-            {url: global.url+'/get_profile',
+        $http({
+            url: global.url + '/get_profile',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            data:data
+            data: data
         }).then(resp => {
             res = resp.data;
             console.warn('get profiles ...')
@@ -192,16 +192,16 @@ app.controller('profileController', function($scope,$location,$rootScope,$http) 
     };
 
     $scope.updateProfile = function() {
-        let data = 'asugar='+$scope.profile.asugar + '&bsugar=' + $scope.profile.bsugar + '&sbp=' + $scope.profile.sbp + '&dbp=' + $scope.profile.dbp + '&bmi=' + $scope.profile.bmi + '&temp='
-         + $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender + '&patientid=' + global.patientid;
+        let data = 'asugar=' + $scope.profile.asugar + '&bsugar=' + $scope.profile.bsugar + '&sbp=' + $scope.profile.sbp + '&dbp=' + $scope.profile.dbp + '&bmi=' + $scope.profile.bmi + '&temp=' +
+            $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender + '&patientid=' + global.patientid;
         console.warn('fetching')
-        $http(
-            {url: global.url+'/update_profile',
+        $http({
+            url: global.url + '/update_profile',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            data:data
+            data: data
         }).then(resp => {
             res = resp.data;
             console.warn('update profiles ...')
@@ -217,33 +217,35 @@ app.controller('profileController', function($scope,$location,$rootScope,$http) 
     };
 });
 
-app.controller('eventsController', function($scope,$location,$rootScope,$http) {
+app.controller('eventsController', function($scope, $location, $rootScope, $http) {
     console.warn('events controller called')
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
+    $scope.suggestedMedicine = '';
+    $scope.suggestedMedicineProb = 0;
     $scope.eventsArr = [];
     $scope.refreshStop = global.refresh;
     $scope.getAllEventsPatient = function() {
-        let data = 'patientid='+global.patientid;
-        $http(
-            {url: global.url+'/allevents',
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data:data
-        })
-        .then(resp=>{
-            res=resp.data;
-            console.warn(res)
-            if(res){
-                $scope.wrongpass = 'Success';
-                $rootScope.showSidebar = true;
-                $scope.eventsArr = res;
-            } else{
-                $scope.wrongpass = 'Error occurred while Adding assignee';
-            }
-        });
+        let data = 'patientid=' + global.patientid;
+        $http({
+                url: global.url + '/allevents',
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data: data
+            })
+            .then(resp => {
+                res = resp.data;
+                console.warn(res)
+                if (res) {
+                    $scope.wrongpass = 'Success';
+                    $rootScope.showSidebar = true;
+                    $scope.eventsArr = res;
+                } else {
+                    $scope.wrongpass = 'Error occurred while Adding assignee';
+                }
+            });
     };
 
     $scope.addEvent = function() {
@@ -288,52 +290,55 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
         console.warn('data is');
         console.warn(data);
         $http({
-            url: global.url+'/add_data',
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data:data
-        })
-        .then(resp => {
-            res = resp.data;
-            if (res) {
-                $scope.wrongpass = 'Success';
-                $rootScope.showSidebar = true;
-                $location.path('/events');
-            } else {
-                $scope.wrongpass = 'Error occurred while Adding Events';
-            }
-        });
+                url: global.url + '/add_data',
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data: data
+            })
+            .then(resp => {
+                res = resp.data;
+                if (res) {
+                    $scope.wrongpass = 'Success';
+                    $rootScope.showSidebar = true;
+                    $location.path('/events');
+                } else {
+                    $scope.wrongpass = 'Error occurred while Adding Events';
+                }
+            });
     }
 
     $scope.getSuggestions = function() {
         let data = 'event=' + $scope.event.disease + '&patientid=' + global.patientid;
         $http({
-            url: global.url+'/suggestmedicines',
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data: data
-        })
-        .then(resp => {
-            let res = resp.data;
-            console.warn('get suggestions ...')
-            console.warn(res)
-            // if (res.length) {
-            //     let min = {
-            //         medicine: res[0].Medicine,
-            //         prob: res[0].Probability
-            //     };
-            //     for(let x in res) {
-            //         if (min[prob])
-            //     }
-            //     $rootScope.showSidebar = true;
-            //     $location.path('/events');
-            // } else {
-            //     $scope.wrongpass = 'Error occurred while Adding Events';
-            // }
-        });
+                url: global.url + '/suggestmedicines',
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data: data
+            })
+            .then(resp => {
+                let res = resp.data;
+                console.warn('get suggestions ...')
+                console.warn(res)
+                if (res.length) {
+                    let max = {
+                        medicine: res[0].Medicine,
+                        prob: res[0].Probability
+                    };
+                    for (let x in res) {
+                        if (max['prob'] < res[x]['prob']) {
+                            max['prob'] = res[x]['prob'];
+                            max['medicine'] = res[x]['medicine'];
+                        }
+                    }
+                    $scope.suggestedMedicine = max['medicine'];
+                    $scope.suggestedMedicineProb = max['prob'];
+                } else {
+                    $scope.wrongpass = 'Error occurred while Adding Events';
+                }
+            });
     }
 });
