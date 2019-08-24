@@ -1,8 +1,8 @@
 <div class="sidebar-menu tree" style="width: 200px;height: 100%; background-color: #fafafa;" >
     <img src="../admin.png" alt="" style="height:100px;margin-left: 25%;margin-top: 10%;" >
     <ul style="list-style: none;padding-top: 5%;padding-left: 0%;">
-            <a href="/?#!/home" class="lists"><li class="lists">Home</li></a>
-            <a href="/?#!/events" class="lists"><li class="lists">Event</li></a>
+            <a href="/?#!/home" class="lists"><li class="lists" style="border-top: 1px solid #0E6363;">Home</li></a>
+            <a href="/?#!/events" class="lists"><li class="lists">Update Records</li></a>
     </ul>
 </div>
 
@@ -11,7 +11,7 @@
         padding-top: 5%;
         padding-left: 25%;
         padding-bottom: 5%;
-        border-bottom: 2px solid #0E6363;
+        border-bottom: 1px solid #0E6363;
     }
     .tree {
         color: black;
@@ -24,4 +24,20 @@
         background-color: #1EACAC;
         color: white;
     }
+    a.activeMenuItem {
+        background-color: #F00;
+        font-weight: bold;
+    }
 </style>
+
+<script>
+    $(document).ready(function(){
+        console.log("Jquery works")
+        $(".sidebar-menu a").each(function() {
+            //console.log($(this).attr('href'));
+            if ((window.location.pathname.indexOf($(this).attr('href'))) > -1) {
+                $(this).parent().addClass('activeMenuItem');
+            }
+        });
+    })
+</script>

@@ -1,8 +1,9 @@
+<div class = "container-fluid">
 <div style="min-height: 400px;" data-ng-init="getAllEventsPatient()">
-    <table >
-        <thead>
+    <table class="table">
+        <thead class="thead-light">
           <tr>
-            <th>Sl No.</th>
+            <th>#</th>
             <th>Disease / Problem</th>
             <th>Duration of the disease</th>
             <th>Medicine(s) Taken</th>
@@ -22,10 +23,12 @@
           </tr>
         </tbody>
     </table>
+    </div>
 </div>
 
-<div class="add-events-style">
-    <img src="../img/add.png" alt="" srcset="" style="position: fixed; bottom: 1%; left: 20%; height: 8%;"
-        data-ng-click="addEvent()"
-    >
+  <div class="add-events-style">
+      <img src="../img/add.svg" alt="" srcset="" style="position: fixed; bottom: 1%; left: 20%; height: 8%;"
+          data-ng-click="addEvent()"
+      >
+  </div>
 </div>

@@ -2,24 +2,27 @@
     <!-- <div data-ng-repeat="let event in eventsArr">
 
     </div> -->
-    <table >
-        <thead>
-          <tr>
-            <th>Sl No.</th>
-            <th>Disease / Problem</th>
-            <th>Duration of the disease</th>
-            <th>Medicine(s) Taken</th>
-            <th>Success</th>
-          </tr>
-        </thead>
-        <tbody data-ng-repeat="event in eventsArr; ">
-          <tr>
-              <td>{{$index + 1}}</td>
-              <td>{{ event.Event }}</td>
-              <td>{{ event.TimeSFO }}</td>
-              <td>{{ event.Medicine.join(',') }}</td>
-              <td>{{ event.Success }}</td>
-          </tr>
-        </tbody>
-    </table>
+    <div class="container-fluid">
+      <h1>Your medical history : </h1>
+      <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>#</th>
+              <th>Disease / Problem</th>
+              <th>Duration of the disease</th>
+              <th>Medicine(s) Taken</th>
+              <th>Success</th>
+            </tr>
+          </thead>
+          <tbody data-ng-repeat="event in eventsArr; ">
+            <tr>
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{ event.Event }}</td>
+                <td>{{ event.TimeSFO }}</td>
+                <td>{{ event.Medicine.join(',') }}</td>
+                <td>{{ event.Success }}</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
 </div>
