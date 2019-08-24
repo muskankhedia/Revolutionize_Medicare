@@ -1,25 +1,24 @@
 package controllers
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
-	"io/ioutil"
-	"encoding/json"
 )
-
 
 // Message takes incoming JSON payload for writing patient details
 type Message struct {
-	PatientID  int `json:"PatientID"`
-	Event string	`json:"Event"`
-	Medicine []string	`json:"Medicine"`
-	TimeSFO int 	`json:"TimeSFO"`
-	Success bool 	`json:"Success"`
+	PatientID int      `json:"PatientID"`
+	Event     string   `json:"Event"`
+	Medicine  []string `json:"Medicine"`
+	TimeSFO   int      `json:"TimeSFO"`
+	Success   bool     `json:"Success"`
 }
 
-//AddDataHandler adds the data into the user details 
+//AddDataHandler adds the data into the user details
 func AddDataHandler(w http.ResponseWriter, r *http.Request) {
 
 	// prevent CORS error
@@ -35,11 +34,11 @@ func AddDataHandler(w http.ResponseWriter, r *http.Request) {
 
 	var msg Message
 	msg = Message{
-		PatientID : patientID, 
-		Event: event,
-		Medicine: medicine,
-		TimeSFO: timeSinceFirstOccurence,
-		Success: success,
+		PatientID: patientID,
+		Event:     event,
+		Medicine:  medicine,
+		TimeSFO:   timeSinceFirstOccurence,
+		Success:   success,
 	}
 	var data []Message
 

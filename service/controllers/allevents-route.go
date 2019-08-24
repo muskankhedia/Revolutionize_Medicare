@@ -4,19 +4,20 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+
 	// "strings"
+	"encoding/json"
 	"io/ioutil"
 	"os"
-	"encoding/json"
 )
 
 //EventDetails contains event details
 type EventDetails struct {
-	PatientID  int `json:"PatientID"`
-	Event string	`json:"Event"`
-	Medicine []string	`json:"Medicine"`
-	TimeSFO int 	`json:"TimeSFO"`
-	Success bool `json:"Success"`
+	PatientID int      `json:"PatientID"`
+	Event     string   `json:"Event"`
+	Medicine  []string `json:"Medicine"`
+	TimeSFO   int      `json:"TimeSFO"`
+	Success   bool     `json:"Success"`
 }
 
 //AllEventsHandler returns all the events of the patient
@@ -39,7 +40,7 @@ func AllEventsHandler(w http.ResponseWriter, r *http.Request) {
 
 	var data []EventDetails
 	json.Unmarshal(byteValue, &data)
-	if (err != nil) {
+	if err != nil {
 		fmt.Println("err")
 	}
 
@@ -48,7 +49,7 @@ func AllEventsHandler(w http.ResponseWriter, r *http.Request) {
 	var list []EventDetails
 
 	for i := 0; i < len(data); i++ {
-		if (data[i].PatientID == patientID) {
+		if data[i].PatientID == patientID {
 			list = append(list, data[i])
 		}
 	}

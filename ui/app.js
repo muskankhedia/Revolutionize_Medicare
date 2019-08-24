@@ -3,7 +3,7 @@ var app = angular.module('pt_management', ['ngRoute']);
 var global = {
     url: 'http://0.0.0.0:9000',
     username: 'default',
-    patientid: '1'
+    patientid: '0'
 };
 
 app.config(function($routeProvider,$locationProvider) {
