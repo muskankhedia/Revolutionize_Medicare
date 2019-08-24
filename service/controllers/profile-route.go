@@ -8,7 +8,7 @@ import (
 )
 
 //ProfileHandler returns the profile details of the patient id
-func ProfileHandler(w http.ResponseWriter, r *http.Request) []byte {
+func ProfileHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("In ProfileHandler")
 
 	// prevent CORS error
@@ -21,7 +21,7 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) []byte {
 	if err := parseForm(r, &form); err != nil {
 		panic(err)
 	}
-	jsonByteValue, err := ioutil.ReadFile("../datastore/users.json")
+	jsonByteValue, err := ioutil.ReadFile("datastore/users.json")
 	if err != nil {
 		panic(err)
 	}
@@ -41,10 +41,8 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) []byte {
 			}
 		}
 	}
-	res, err := json.Marshal(form)
+	_, err = json.Marshal(form)
 	if err != nil {
 		panic(err)
 	}
-	return ([]byte(res))
-
 }
