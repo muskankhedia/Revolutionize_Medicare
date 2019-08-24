@@ -99,7 +99,7 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
         let data = 'patientid=' + $scope.patientid;
         console.log('data is', data);
         $http(
-            {url: global.url+'/login',
+            {url: global.url+'/profile',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"

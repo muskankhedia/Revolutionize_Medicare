@@ -41,8 +41,10 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	_, err = json.Marshal(form)
+	res, err := json.Marshal(form)
 	if err != nil {
 		panic(err)
 	}
+	//log.Println(form.Name)
+	w.Write([]byte(res))
 }
