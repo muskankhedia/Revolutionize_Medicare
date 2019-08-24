@@ -4,8 +4,11 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	// "time"
+	// "sync"
 
 	"github.com/gorilla/mux"
+	// "github.com/davecgh/go-spew/spew"
 	"github.com/muskankhedia/Revolutionize_Medicare/service/controllers"
 )
 
@@ -27,6 +30,18 @@ func routeHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	// var mutex = &sync.Mutex{}
+	// go func() {
+	// 	t := time.Now()
+	// 	genesisBlock := controllers.Block{}
+	// 	genesisBlock = controllers.Block{0, t.String(), 0, controllers.CalculateHash(genesisBlock), "", "", []string{}, 0}
+	// 	spew.Dump(genesisBlock)
+
+	// 	mutex.Lock()
+	// 	controllers.Blockchain = append(controllers.Blockchain, genesisBlock)
+	// 	mutex.Unlock()
+	// }()
+	
 	r := mux.NewRouter()
 	r.HandleFunc("/login", controllers.LoginHandler)
 	r.HandleFunc("/profile", controllers.ProfileHandler)
