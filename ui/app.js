@@ -109,9 +109,12 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
             },
             data:data
         }).then(resp => {
-            res = resp.data;
+            let res = resp.data;
+            console.log('res is ', res)
             if (res) {
-                $location.path('/dashboard');
+                $location.path('/home');
+                $rootScope.showSidebar = true;
+                $rootScope.settingsOption = true;
             } else {
                 $scope.wrongpass = 'Error occurred while Adding assignee';
             }
