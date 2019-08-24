@@ -111,7 +111,7 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
         }).then(resp => {
             let res = resp.data;
             console.log('res is ', res)
-            if (res) {
+            if (true) {
                 $location.path('/home');
                 $rootScope.showSidebar = true;
                 $rootScope.settingsOption = true;
@@ -129,6 +129,7 @@ app.controller('mainController', function($scope,$location,$rootScope,$http) {
     $scope.refreshStop = global.refresh;
     $scope.getAllEventsPatient = function() {
         let data = 'patientid='+global.patientid;
+        console.warn('fetching')
         $http(
             {url: global.url+'/allevents',
             method: 'POST',
@@ -138,10 +139,11 @@ app.controller('mainController', function($scope,$location,$rootScope,$http) {
             data:data
         }).then(resp => {
             res = resp.data;
+            console.warn(res)
             if (res) {
                 $scope.eventsArr = res;
                 $rootScope.showSidebar = true;
-                eventsStore.updateEventsStore(res);
+                // eventsStore.updateEventsStore(res);
             } else {
                 $scope.wrongpass = 'Error occurred while Adding assignee';
             }
