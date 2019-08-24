@@ -58,5 +58,5 @@ func AddDataHandler(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	fmt.Println("Reached Add Data")
+	w.Write([]byte(`true`))
 }
