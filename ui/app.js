@@ -165,6 +165,8 @@ app.controller('profileController', function($scope, $location, $rootScope, $htt
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
     $scope.refreshStop = global.refresh;
+    $scope.wrongpass = '';
+    $scope.profile = {};
     $scope.eventsArr = [];
     $scope.getProfile = function() {
         let data = 'patientid=' + global.patientid;
@@ -182,8 +184,16 @@ app.controller('profileController', function($scope, $location, $rootScope, $htt
             console.warn(res)
             if (res) {
                 $rootScope.showSidebar = true;
-                // eventsStore.updateEventsStore(res);
-                $scope.wrongpass = 'Updated successfully'
+                $scope.profile.asugar = res.asugar;
+                $scope.profile.bsugar = res.bsugar;
+                $scope.profile.sbp = res.sbp;
+                $scope.profile.dbp = res.dbp;
+                $scope.profile.bmi = res.bmi;
+                $scope.profile.temp = res.temp;
+                $scope.profile.pulse = res.pulse;
+                $scope.profile.resp = res.resp;
+                $scope.profile.gender = res.gender;
+
             } else {
                 $scope.wrongpass = 'Error occurred';
             }
@@ -208,6 +218,7 @@ app.controller('profileController', function($scope, $location, $rootScope, $htt
             console.warn(res)
             if (res) {
                 $rootScope.showSidebar = true;
+                $scope.wrongpass = 'Updated successfully';
                 // eventsStore.updateEventsStore(res);
             } else {
                 $scope.wrongpass = 'Error occurred while Adding assignee';
