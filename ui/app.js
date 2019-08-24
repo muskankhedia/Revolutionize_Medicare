@@ -118,6 +118,7 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
             console.log('res is ', res)
             if (true) {
                 $location.path('/home');
+                global.patientid = patientid;
                 $rootScope.showSidebar = true;
                 $rootScope.settingsOption = true;
             } else {
@@ -283,7 +284,7 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
             }
         };
         date = rawArr[2] + '/' + monthNumber(rawArr[1]) + '/' + rawArr[3];
-        let data = 'patientid=' + global.patientid + '&disease=' + $scope.event.disease + '&medicine=' + $scope.event.medicine + '&time=' + $scope.event.time + '&date=' + date;
+        let data = 'patientid=' + global.patientid + '&event=' + $scope.event.disease + '&medicine=' + $scope.event.medicine + '&time_since_first_occurance=' + $scope.event.time + '&date=' + date;
         console.warn('data is');
         console.warn(data);
         $http({
@@ -303,6 +304,36 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
             } else {
                 $scope.wrongpass = 'Error occurred while Adding Events';
             }
+        });
+    }
+
+    $scope.getSuggestions = function() {
+        let data = 'event=' + $scope.event.disease + '&patientid=' + global.patientid;
+        $http({
+            url: global.url+'/suggestmedicines',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: data
+        })
+        .then(resp => {
+            let res = resp.data;
+            console.warn('get suggestions ...')
+            console.warn(res)
+            // if (res.length) {
+            //     let min = {
+            //         medicine: res[0].Medicine,
+            //         prob: res[0].Probability
+            //     };
+            //     for(let x in res) {
+            //         if (min[prob])
+            //     }
+            //     $rootScope.showSidebar = true;
+            //     $location.path('/events');
+            // } else {
+            //     $scope.wrongpass = 'Error occurred while Adding Events';
+            // }
         });
     }
 });
