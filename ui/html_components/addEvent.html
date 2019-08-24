@@ -1,26 +1,47 @@
 <!-- <div data-ng-show="refreshStop" >
     <h3>Please <a href="/?#!/login">Re-login </a> to continue.</h3>
   </div> -->
-<div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
-    <form action="" data-ng-submit="addAssignee()" style="height:1000px;">
-        <h4>Add Medicine Event</h4><hr>
 
-        Disease : <input type="text" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 18%;text-align: center;margin-top: 20px;"
-            ng-model="event.disease" required
-        />
-        <span data-ng-if="event.disease.length > 0">
-            <button class="btn btn-success" style="margin-left: 1%;"  data-ng-click="getSuggestions()">Suggestions</button>
-        </span> <br>
-        <span data-ng-if="suggestedMedicine.length !== 0" >Suggested Medicine: {{ suggestedMedicine }} with probable success of {{ suggestedMedicineProb }}</span> <br>
-        Medicine : <input type="text" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 17%;text-align: center;margin-top: 20px;"
-            ng-model="event.medicine" required
-        /><br/>
-        Time since first occurance : <input type="number" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 6%;text-align: center;margin-top: 20px;"
-            ng-model="event.time" required
-        /> (days) <br/> <br>
-        Date : <input type="date" data-ng-model="event.date" style="margin-left: 20%;"> <br> <br>
-       <button type="submit" class="btn btn-success" data-ng-click="addEventParticular()" > Add </button>
-       <a href="/?#!/events"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a>
-        <span>{{wrongpass}}</span>
-    </form>
-</div>
+<div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add new Medical Data</h3> 
+                </div>
+                <div class="panel-body">
+                    <form action="" data-ng-submit="addAssignee()">
+                        <div class="form-group">
+                            <label for="disease">Disease</label>
+                            <input type="text" class="form-control" name="disease" placeholder="Enter name of disease / illness" ng-model="event.disease" required/>
+                        </div>
+                        
+                        <span data-ng-if="event.disease.length > 0">
+                        <button class="btn btn-success" style="margin-left: 1%;"  data-ng-click="getSuggestions()">Suggestions</button>
+                        </span> <br>
+                        <span data-ng-if="suggestedMedicine.length !== 0" >Suggested Medicine: {{ suggestedMedicine }} with probable success of {{ suggestedMedicineProb }}</span>
+                        
+                        <div class="form-group">
+                            <label for="medicine">Medicine</label>
+                            <input type="text" class="form-control" name="medicine" placeholder="Enter name of medicine" ng-model="event.medicine" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="time">Time since first occurence</label>
+                            <input type="number" class="form-control" name="time" placeholder="Enter duration of illness in days" ng-model="event.time" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" name="time" placeholder="Enter date of illness" ng-model="event.date" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-success" data-ng-click="addEventParticular()" > Add </button>
+                        <a href="/?#!/events"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a>
+                        <span>{{wrongpass}}</span>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
