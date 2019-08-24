@@ -10,15 +10,6 @@ import (
 	"crypto/sha256"
 )
 
-// Message takes incoming JSON payload for writing patient details
-type Message struct {
-	PatientID int      `json:"PatientID"`
-	Event     string   `json:"Event"`
-	Medicine  []string `json:"Medicine"`
-	TimeSFO   int      `json:"TimeSFO"`
-	Success   bool     `json:"Success"`
-}
-
 //AddDataHandler adds the data into the user details
 func AddDataHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -35,6 +26,7 @@ func AddDataHandler(w http.ResponseWriter, r *http.Request) {
 
 	var msg EventBlock
 	msg = EventBlock{
+		EventID: len(Chain),
 		PatientID: patientID,
 		Event:     event,
 		Medicine:  medicine,

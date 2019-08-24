@@ -245,6 +245,7 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
     $scope.suggestedMedicine = '';
     $scope.suggestedMedicineProb = 0;
     $scope.eventsArr = [];
+    $scope.event = {};
     $scope.refreshStop = global.refresh;
     $scope.getAllEventsPatient = function() {
         let data = 'patientid=' + global.patientid;
@@ -273,8 +274,8 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
         $location.path('/addEvent');
     };
 
-    $scope.updateSuccess = function() {
-        let data = 'success=' + $scope.event.Success;
+    $scope.updateSuccess = function(e, id) {
+        let data = 'success=' + e + '&eventid=' + id
         $http({
             url: global.url + '/update_Success',
             method: 'POST',
