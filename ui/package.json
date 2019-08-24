@@ -1,0 +1,19 @@
+{
+  "name": "revmdui",
+  "version": "1.0.0",
+  "description": "ui for rev_med",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muskankhedia/Revolutionize_Medicare.git"
+  },
+  "author": "CodeZero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muskankhedia/Revolutionize_Medicare/issues"
+  },
+  "homepage": "https://github.com/muskankhedia/Revolutionize_Medicare#readme"
+}
