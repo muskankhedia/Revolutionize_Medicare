@@ -38,6 +38,16 @@ app.config(function($routeProvider,$locationProvider) {
         controller:'eventsController',
         title:'Events',
     })
+    .when('/login', {
+        templateUrl:'./html_components/login.html',
+        controller:'primaryController',
+        title:'Login',
+    })
+    .when('/signUp', {
+        templateUrl:'./html_components/signup.html',
+        controller:'primaryController',
+        title:'Login',
+    })
 })
 
 app.factory('eventsStore', function () {
@@ -48,17 +58,62 @@ app.factory('eventsStore', function () {
 		for (let i in x) {
             usageArray.push(x[i]);
         }
-
 	};
 	let getUsageStore = function () {
-
 		return usageArray;
-
 	};
 	return {
 		updateEventsStore: updateUsageStore,
 		getEventsStore   : getUsageStore,
 	};
+});
+
+app.controller('primaryController', function($scope,$location,$rootScope,$http) {
+    console.warn('primaryController called')
+    $rootScope.showSidebar = false;
+    $rootScope.settingsOption = false;
+    $scope.refreshStop = global.refresh;
+    $scope.handleSignUp = function() {
+        let data = 'name=' + $scope.signup.name + '&email=' + $scope.signup.email + '&age=' + $scope.signup.age + '&dob=' + $scope.signup.dob + '&bg=' + $scope.signup.bg + '&b=' + $scope.signup.b;
+        console.log('data is', data);
+        $http(
+            {url: global.url+'/signup',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data:data
+        }).then(resp => {
+            res = resp.data;
+            if (res) {
+                $scope.eventsArr = res;
+                $rootScope.showSidebar = true;
+                eventsStore.updateEventsStore(res);
+            } else {
+                $scope.wrongpass = 'Error occurred while Adding assignee';
+            }
+        });
+    }
+
+    $scope.handleLogin = function() {
+        let data = 'patientid=' + $scope.patientid;
+        console.log('data is', data);
+        $http(
+            {url: global.url+'/login',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data:data
+        }).then(resp => {
+            res = resp.data;
+            if (res) {
+                $location.path('/dashboard');
+            } else {
+                $scope.wrongpass = 'Error occurred while Adding assignee';
+            }
+        });
+    }
 });
 
 app.controller('mainController', function($scope,$location,$rootScope,$http) {
