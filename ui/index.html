@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html data-ng-app="pt_management" >
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
+    <title  >Port | Train Management</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="./js/angular.min.js"></script>
+        <script src="./js/angular-route.js"></script>
+        <script src="./js/angular.min.js.map"></script>
+        <script src="./app.js"></script>
+        <header data-ng-include="'html_components/header.html'" ></header>
+        <aside data-ng-include="'html_components/sidebar.html'" data-ng-show="showSidebar" ></aside>
+        <div data-ng-if="showSidebar" >
+                <main data-ng-view id='mainContent' style="margin-left: 230px; margin-top:20px;"></main>
+        </div>
+        <div  data-ng-if="!showSidebar" >
+                <main data-ng-view id='mainContent' ></main>
+        </div>
+        <footer data-ng-include="'html_components/footer.html'"
+        style="margin-left: 100px;margin-top: 50px;position: absolute;width: 100%;" data-ng-show="showSidebar"  ></footer>
+</body>
+</html>

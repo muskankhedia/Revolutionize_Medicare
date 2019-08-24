@@ -4,7 +4,8 @@
   "description": "ui for rev_med",
   "main": "main.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
