@@ -13,11 +13,11 @@ import (
 
 //EventDetails contains event details
 type EventDetails struct {
-	PatientID  int `json:"PatientID"`
-	Event string	`json:"Event"`
-	Medicine []string	`json:"Medicine"`
-	TimeSFO int 	`json:"TimeSFO"`
-	Success bool `json:"Success"`
+	PatientID int      `json:"PatientID"`
+	Event     string   `json:"Event"`
+	Medicine  []string `json:"Medicine"`
+	TimeSFO   int      `json:"TimeSFO"`
+	Success   bool     `json:"Success"`
 }
 
 //AllEventsHandler returns all the events of the patient
