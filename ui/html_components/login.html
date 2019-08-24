@@ -1,0 +1,16 @@
+<div class="" style="margin-top: 10%;text-align: center;">
+    <form action="" style="border:2px solid pink;padding: 20px;margin-left: 20%;margin-right: 20%;
+    border-radius: 20px;" name="loginForm" data-ng-submit="checkLogin(loginForm.$valid)" >
+        Patient ID : <input type="number" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;"
+            ng-model="patientid" required
+        /><br/><br/>
+        <button type="submit" class="btn btn-success" data-ng-click="handleLogin()" >Submit</button> &nbsp;
+        <a href="/?#!/signUp"><button type="button" class="btn btn-primary" >Sign Up</button></a>
+        <br/><br/>
+        <div data-ng-if="showLoader">
+            <div class="loader"></div>
+            <img src="../loader.gif" alt="" style="height:100px;margin-left: 3%;margin-top: 10px;">
+        </div>
+        {{wrongpass}}
+    </form>
+</div>
