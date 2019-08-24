@@ -3,7 +3,7 @@ var app = angular.module('pt_management', ['ngRoute']);
 var global = {
     url: 'http://0.0.0.0:9000',
     username: 'default',
-    patientid: '1'
+    patientid: ''
 };
 
 app.config(function($routeProvider, $locationProvider) {
@@ -116,9 +116,10 @@ app.controller('primaryController', function($scope, $location, $rootScope, $htt
         }).then(resp => {
             let res = resp.data;
             console.log('res is ', res)
-            if (true) {
+            if (res) {
+                console.warn('was', $scope.patientid)
+                global.patientid = $scope.patientid;
                 $location.path('/home');
-                global.patientid = patientid;
                 $rootScope.showSidebar = true;
                 $rootScope.settingsOption = true;
             } else {
