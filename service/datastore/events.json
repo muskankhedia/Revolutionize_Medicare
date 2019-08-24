@@ -1,1 +1,0 @@
-[{"PatientID":1,"Event":"fever","medicine":["paracetamol"],"TimeSFO":12},{"PatientID":2,"Event":"fever","medicine":["paracetamol"],"TimeSFO":12},{"PatientID":2,"Event":"fever","medicine":["paracetamol"],"TimeSFO":12},{"PatientID":1,"Event":"jaundice","medicine":["peniciline"],"TimeSFO":5}]
