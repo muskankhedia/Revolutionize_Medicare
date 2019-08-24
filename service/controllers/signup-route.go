@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"fmt"
+	"strconv"
 )
 
 // SignupHandler will parse the sign up form and create a new Patient
@@ -36,8 +38,9 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-
-	w.Write([]byte(string(form.PatientID)))
+	fmt.Println("gdfg")
+	fmt.Println((string(form.PatientID)))
+	w.Write([]byte(strconv.Itoa(form.PatientID)))
 }
 
 // SignupForm contains the details entered by the user in the signup form

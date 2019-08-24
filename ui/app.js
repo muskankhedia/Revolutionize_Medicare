@@ -73,6 +73,7 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
     $rootScope.showSidebar = false;
     $rootScope.settingsOption = false;
     $scope.refreshStop = global.refresh;
+    $scope.patientid = '';
     $scope.handleSignUp = function() {
         let data = 'name=' + $scope.signup.name + '&email=' + $scope.signup.email + '&age=' + $scope.signup.age + '&dob=' + $scope.signup.dob + '&bg=' + $scope.signup.bg + '&b=' + $scope.signup.b;
         console.log('data is', data);
@@ -84,9 +85,11 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
             },
             data:data
         }).then(resp => {
-            res = resp.data;
+            let res = resp.data;
+            console.log('resp is ', res)
+            console.log(resp)
             if (res) {
-                $scope.eventsArr = res;
+                $scope.patientid = res;
                 $rootScope.showSidebar = true;
                 eventsStore.updateEventsStore(res);
             } else {
@@ -106,9 +109,12 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
             },
             data:data
         }).then(resp => {
-            res = resp.data;
+            let res = resp.data;
+            console.log('res is ', res)
             if (res) {
-                $location.path('/dashboard');
+                $location.path('/home');
+                $rootScope.showSidebar = true;
+                $rootScope.settingsOption = true;
             } else {
                 $scope.wrongpass = 'Error occurred while Adding assignee';
             }
