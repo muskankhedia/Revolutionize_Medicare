@@ -1,0 +1,121 @@
+[{
+	"PatientID": 1,
+	"Event": "fever",
+	"medicine": ["paracetamol"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 2,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 5,
+	"Success": true
+}, {
+	"PatientID": 3,
+	"Event": "fever",
+	"medicine": ["paracetamol"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 4,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 5,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 6,
+	"Event": "fever",
+	"medicine": ["paracetamol"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 7,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 8,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 9,
+	"Event": "fever",
+	"medicine": ["paracetamol"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 10,
+	"Event": "jaundice",
+	"medicine": ["steroid"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 11,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 12,
+	"Event": "fever",
+	"medicine": ["paracetamol"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 13,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 14,
+	"Event": "jaundice",
+	"medicine": ["steroid"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 15,
+	"Event": "jaundice",
+	"medicine": ["steroid"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 16,
+	"Event": "cold",
+	"medicine": ["benadryl"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 17,
+	"Event": "jaundice",
+	"medicine": ["steroid"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 18,
+	"Event": "jaundice",
+	"medicine": ["steroid"],
+	"TimeSFO": 12,
+	"Success": false
+}, {
+	"PatientID": 19,
+	"Event": "fever",
+	"medicine": ["paracetamol"],
+	"TimeSFO": 12,
+	"Success": true
+}, {
+	"PatientID": 20,
+	"Event": "jaundice",
+	"medicine": ["steroid"],
+	"TimeSFO": 12,
+	"Success": false
+}]
