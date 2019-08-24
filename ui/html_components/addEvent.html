@@ -1,20 +1,20 @@
 <!-- <div data-ng-show="refreshStop" >
     <h3>Please <a href="/?#!/login">Re-login </a> to continue.</h3>
   </div> -->
-<div class="" style="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
-    <form action="" style="" data-ng-submit="addAssignee()" style="height:1000px;">
-        <h4>Event</h4><hr>
+<div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
+    <form action="" data-ng-submit="addAssignee()" style="height:1000px;">
+        <h4>Add Medicine Event</h4><hr>
 
-        Disease : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+        Disease : <input type="text" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 18%;text-align: center;margin-top: 20px;"
             ng-model="event.disease" required
         /><br/>
-        Medicine : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+        Medicine : <input type="text" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 17%;text-align: center;margin-top: 20px;"
             ng-model="event.medicine" required
         /><br/>
-        Time since first occurance : <input type="number" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+        Time since first occurance : <input type="number" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 6%;text-align: center;margin-top: 20px;"
             ng-model="event.time" required
         /> (days) <br/> <br>
-        Date : <input type="date" data-ng-model="event.date" > <br> <br>
+        Date : <input type="date" data-ng-model="event.date" style="margin-left: 20%;"> <br> <br>
        <button type="submit" class="btn btn-success" data-ng-click="addEventParticular()" > Add </button>
        <a href="/?#!/events"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a>
         <span>{{wrongpass}}</span>
