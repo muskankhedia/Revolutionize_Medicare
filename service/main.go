@@ -35,6 +35,7 @@ func main() {
 	r.HandleFunc("/signup", controllers.SignupHandler).Methods("POST")
 	r.HandleFunc("/allevents", controllers.AllEventsHandler)
 	r.HandleFunc("/suggestmedicines", controllers.SuggestHandler)
+	r.HandleFunc("/update_Success", controllers.UpdateSuccessHandler)
 
 	r.NotFoundHandler = http.HandlerFunc(error404)
 

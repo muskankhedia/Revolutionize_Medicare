@@ -133,6 +133,7 @@ app.controller('mainController', function($scope, $location, $rootScope, $http) 
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
     $scope.refreshStop = global.refresh;
+    $scope.event = {};
     $scope.eventsArr = [];
     $scope.getAllEventsPatient = function() {
         let data = 'patientid=' + global.patientid;
@@ -158,6 +159,14 @@ app.controller('mainController', function($scope, $location, $rootScope, $http) 
         });
 
     };
+
+    $scope.changeSuccess = function() {
+        console.log("reached")
+        console.log($scope.event.Success)
+    };
+
+    
+
 });
 
 app.controller('profileController', function($scope, $location, $rootScope, $http) {
@@ -261,6 +270,30 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
 
     $scope.addEvent = function() {
         $location.path('/addEvent');
+    };
+
+    $scope.updateSuccess = function() {
+        let data = 'success=' + $scope.event.Success;
+        $http({
+            url: global.url + '/update_Success',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: data
+        }).then(resp => {
+            res = resp.data;
+            console.warn('update success ...')
+            console.warn(res)
+            if (res) {
+                $rootScope.showSidebar = true;
+                $scope.wrongpass = 'Updated successfully';
+                // eventsStore.updateEventsStore(res);
+            } else {
+                $scope.wrongpass = 'Error occurred while Adding assignee';
+            }
+        });
+
     };
 
     $scope.addEventParticular = function() {

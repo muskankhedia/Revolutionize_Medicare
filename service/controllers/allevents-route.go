@@ -61,3 +61,8 @@ func AllEventsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(j)
 
 }
+
+//UpdateSuccessHandler Updates the success 
+func UpdateSuccessHandler(w http.ResponseWriter, r *http.Request) {
+	
+}

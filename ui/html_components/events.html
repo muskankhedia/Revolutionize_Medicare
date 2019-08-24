@@ -15,7 +15,13 @@
               <td>{{ event.Event }}</td>
               <td>{{ event.TimeSFO }}</td>
               <td>{{ event.Medicine.join(',') }}</td>
-              <td>{{ event.Success }}</td>
+              <td data-ng-if="event.Success == false">
+                  <input type="text" ng-model="event.Success" required/>
+                  <button onclick="updateSuccess()">Done</button>
+              </td>
+              <td data-ng-if="event.Success == true">
+                  {{event.Success}}
+              </td>
           </tr>
         </tbody>
     </table>
