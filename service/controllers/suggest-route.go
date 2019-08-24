@@ -3,10 +3,13 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
-	"os"
 	"strings"
+)
+
+var (
+	//Chain is the global block chain used for processing
+	Chain []EventBlock
 )
 
 //Event contains event details
@@ -16,6 +19,16 @@ type Event struct {
 	Medicine  []string `json:"Medicine"`
 	TimeSFO   int      `json:"TimeSFO"`
 	Success   bool     `json:"Success"`
+}
+
+//EventBlock contains event details block as used in chain
+type EventBlock struct {
+	PatientID int
+	Event     string
+	Medicine  []string
+	TimeSFO   int
+	Success   bool
+	Hash	  string
 }
 
 //SuccessRate contains the success rate
@@ -32,25 +45,10 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	r.ParseForm()
-
 	// patientID := r.FormValue("patientid")
 	event := r.FormValue("event")
-
-	jsonFile, err := os.Open("datastore/init.json")
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer jsonFile.Close()
-
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-
-	var data []Event
-	json.Unmarshal(byteValue, &data)
-	if err != nil {
-		fmt.Println("err")
-	}
-
-	var list []Event
+	data := Chain
+	var list []EventBlock
 
 	for i := 0; i < len(data); i++ {
 		if strings.Compare(strings.ToLower(event), strings.ToLower(data[i].Event)) == 0 {

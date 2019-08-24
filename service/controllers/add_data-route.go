@@ -2,11 +2,12 @@ package controllers
 
 import (
 	"encoding/json"
-	// "fmt"
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"encoding/hex"
 	"strings"
+	"crypto/sha256"
 )
 
 // Message takes incoming JSON payload for writing patient details
@@ -32,27 +33,23 @@ func AddDataHandler(w http.ResponseWriter, r *http.Request) {
 	timeSinceFirstOccurence, err := strconv.Atoi(r.FormValue("time_since_first_occurance"))
 	success, err := strconv.ParseBool(r.FormValue("success"))
 
-	var msg Message
-	msg = Message{
+	var msg EventBlock
+	msg = EventBlock{
 		PatientID: patientID,
 		Event:     event,
 		Medicine:  medicine,
 		TimeSFO:   timeSinceFirstOccurence,
 		Success:   success,
+		Hash: "",
 	}
-	var data []Message
+	i := len(Chain) - 1
+	data := Chain[i].Event + string(Chain[i].PatientID) + string(Chain[i].TimeSFO) + strconv.FormatBool(Chain[i].Success) + strings.Join(Chain[i].Medicine, ",")
+	inst := sha256.New()
+	inst.Write([]byte(data))
+	msg.Hash = hex.EncodeToString(inst.Sum(nil))
 
-	jsonByteValue, err := ioutil.ReadFile("datastore/events.json")
-	if err != nil {
-		panic(err)
-	}
-
-	if len(jsonByteValue) != 0 {
-		err = json.Unmarshal(jsonByteValue, &data)
-	}
-
-	data = append(data, msg)
-	result, err := json.Marshal(data)
+	Chain = append(Chain, msg)
+	result, err := json.Marshal(Chain)
 	err = ioutil.WriteFile("datastore/events.json", result, 0777)
 	if err != nil {
 		panic(err)
