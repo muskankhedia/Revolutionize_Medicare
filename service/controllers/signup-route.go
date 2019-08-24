@@ -42,7 +42,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 
 // SignupForm contains the details entered by the user in the signup form
 type SignupForm struct {
-	PatientID  int
+	PatientID  int    `schema:"patientid"`
 	Name       string `schema:"name"`
 	Email      string `schema:"email"`
 	Age        string `schema:"age"`
