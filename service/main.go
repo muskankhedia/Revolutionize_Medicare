@@ -30,6 +30,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/login", controllers.LoginHandler)
 	r.HandleFunc("/profile", controllers.ProfileHandler)
+	r.HandleFunc("/add_data", controllers.AddDataHandler)
 
 	r.NotFoundHandler = http.HandlerFunc(error404)
 
