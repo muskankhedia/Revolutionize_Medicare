@@ -10,7 +10,7 @@ import (
 )
 
 
-// Message takes incoming JSON payload for writing heart rate
+// Message takes incoming JSON payload for writing patient details
 type Message struct {
 	PatientID  int `json: "patientID"`
 	Event string	`json: "event"`
