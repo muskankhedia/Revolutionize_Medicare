@@ -1,7 +1,7 @@
 var app = angular.module('pt_management', ['ngRoute']);
 
 var global = {
-    url: 'http://0.0.0.0:5000',
+    url: 'http://0.0.0.0:9000',
     username: 'default',
     patientid: '1'
 };
@@ -99,7 +99,7 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
         let data = 'patientid=' + $scope.patientid;
         console.log('data is', data);
         $http(
-            {url: global.url+'/login',
+            {url: global.url+'/profile',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
