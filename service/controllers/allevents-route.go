@@ -4,17 +4,18 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+
 	// "strings"
+	"encoding/json"
 	"io/ioutil"
 	"os"
-	"encoding/json"
 )
 
 type EventDetails struct {
-	PatientID  int `json: "patientID"`
-	Event string	`json: "event"`
-	Medicine []string	`json:"medicine"`
-	TimeSFO int 	`json: timeSFO`
+	PatientID int      `json: "patientID"`
+	Event     string   `json: "event"`
+	Medicine  []string `json:"medicine"`
+	TimeSFO   int      `json: timeSFO`
 }
 
 //AllEventsHandler returns all the events of the patient
@@ -37,7 +38,7 @@ func AllEventsHandler(w http.ResponseWriter, r *http.Request) {
 
 	var data []EventDetails
 	json.Unmarshal(byteValue, &data)
-	if (err != nil) {
+	if err != nil {
 		fmt.Println("err")
 	}
 
@@ -46,7 +47,7 @@ func AllEventsHandler(w http.ResponseWriter, r *http.Request) {
 	var list []EventDetails
 
 	for i := 0; i < len(data); i++ {
-		if (data[i].PatientID == patientID) {
+		if data[i].PatientID == patientID {
 			list = append(list, data[i])
 		}
 	}

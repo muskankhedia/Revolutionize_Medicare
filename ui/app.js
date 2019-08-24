@@ -3,7 +3,7 @@ var app = angular.module('pt_management', ['ngRoute']);
 var global = {
     url: 'http://0.0.0.0:9000',
     username: 'default',
-    patientid: '1'
+    patientid: '0'
 };
 
 app.config(function($routeProvider,$locationProvider) {
@@ -192,7 +192,7 @@ app.controller('profileController', function($scope,$location,$rootScope,$http) 
 
     $scope.updateProfile = function() {
         let data = 'asugar='+$scope.profile.asugar + '&bsugar=' + $scope.profile.bsugar + '&sbp=' + $scope.profile.sbp + '&dbp=' + $scope.profile.dbp + '&bmi=' + $scope.profile.bmi + '&temp='
-         + $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender;
+         + $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender + '&patientid=' + global.patientid;
         console.warn('fetching')
         $http(
             {url: global.url+'/update_profile',

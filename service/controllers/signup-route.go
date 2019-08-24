@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"fmt"
 	"strconv"
 )
 
@@ -38,8 +37,8 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("gdfg")
-	fmt.Println((string(form.PatientID)))
+
+	log.Println((string(form.PatientID)))
 	w.Write([]byte(strconv.Itoa(form.PatientID)))
 }
 
