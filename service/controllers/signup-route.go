@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -20,12 +20,21 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	b, err := json.Marshal(form)
+	// appending the new user to the list of users
+	jsonByteValue, err := ioutil.ReadFile("users.json")
 	if err != nil {
-		fmt.Println(err)
-		return
+		panic(err)
 	}
-	log.Println(string(b))
+	var users []SignupForm
+	if len(jsonByteValue) != 0 {
+		err = json.Unmarshal(jsonByteValue, &users)
+	}
+	users = append(users, form)
+	result, err := json.Marshal(users)
+	err = ioutil.WriteFile("users.json", result, 0777)
+	if err != nil {
+		panic(err)
+	}
 
 	http.Redirect(w, r, "/profile", http.StatusFound)
 }
