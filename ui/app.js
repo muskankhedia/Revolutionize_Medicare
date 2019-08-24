@@ -284,7 +284,7 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
             }
         };
         date = rawArr[2] + '/' + monthNumber(rawArr[1]) + '/' + rawArr[3];
-        let data = 'patientid=' + global.patientid + '&disease=' + $scope.event.disease + '&medicine=' + $scope.event.medicine + '&time=' + $scope.event.time + '&date=' + date;
+        let data = 'patientid=' + global.patientid + '&event=' + $scope.event.disease + '&medicine=' + $scope.event.medicine + '&time_since_first_occurance=' + $scope.event.time + '&date=' + date;
         console.warn('data is');
         console.warn(data);
         $http({

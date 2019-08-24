@@ -1,11 +1,12 @@
 <div style="min-height: 400px;" data-ng-init="getAllEventsPatient()">
-    <table>
+    <table >
         <thead>
           <tr>
             <th>Sl No.</th>
             <th>Disease / Problem</th>
             <th>Duration of the disease</th>
             <th>Medicine(s) Taken</th>
+            <th>Success</th>
           </tr>
         </thead>
         <tbody data-ng-repeat="event in eventsArr; ">
@@ -13,7 +14,8 @@
               <td>{{$index + 1}}</td>
               <td>{{ event.Event }}</td>
               <td>{{ event.TimeSFO }}</td>
-              <td>{{ event.medicine.join(',') }}</td>
+              <td>{{ event.Medicine.join(',') }}</td>
+              <td>{{ event.Success }}</td>
           </tr>
         </tbody>
     </table>
