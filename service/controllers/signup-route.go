@@ -29,6 +29,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 	if len(jsonByteValue) != 0 {
 		err = json.Unmarshal(jsonByteValue, &users)
 	}
+	form.PatientID = len(users) + 1
 	users = append(users, form)
 	result, err := json.Marshal(users)
 	err = ioutil.WriteFile("users.json", result, 0777)
@@ -41,9 +42,9 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 
 // SignupForm contains the details entered by the user in the signup form
 type SignupForm struct {
+	PatientID  int
 	Name       string `schema:"name"`
 	Email      string `schema:"email"`
-	Password   string `schema:"password"`
 	Age        string `schema:"age"`
 	DOB        string `schema:"dob"`
 	BloodGroup string `schema:"bloodgroup"`
