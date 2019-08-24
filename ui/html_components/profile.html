@@ -1,0 +1,37 @@
+<div data-ng-init="getProfile()">
+    <div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
+        <form action="" data-ng-submit="addAssignee()" style="height:1000px;">
+            <h4> Profile </h4><hr>
+            Sugar (before food) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.bsugar" required
+            /><br/>
+            Sugar (after food) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.asugar" required
+            /><br/>
+            Blood Pressure (systolic) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.sbp" required
+            /><br/>
+            Blood Pressure (diastolic) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.dbp" required
+            /><br/>
+            Body Mass Index : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.bmi" required
+            /><br/>
+            Temperature : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.temp" required
+            /><br/>
+            Pulse : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.pulse" required
+            /><br/>
+            Respiration Rate: <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.resp" required
+            /><br/>
+            Gender : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.gender" required
+            /><br/> <br>
+           <button type="submit" class="btn btn-success" > Update </button>
+           <a href="/?#!/home"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a> 
+            <span>{{wrongpass}}</span>
+        </form>
+    </div>
+</div>
