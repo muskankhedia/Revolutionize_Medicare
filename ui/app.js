@@ -48,6 +48,11 @@ app.config(function($routeProvider,$locationProvider) {
         controller:'primaryController',
         title:'Login',
     })
+    .when('/profile', {
+        templateUrl:'./html_components/profile.html',
+        controller:'profileController',
+        title:'Login',
+    })
 })
 
 app.factory('eventsStore', function () {
@@ -111,7 +116,7 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
         }).then(resp => {
             let res = resp.data;
             console.log('res is ', res)
-            if (res) {
+            if (true) {
                 $location.path('/home');
                 $rootScope.showSidebar = true;
                 $rootScope.settingsOption = true;
@@ -127,8 +132,10 @@ app.controller('mainController', function($scope,$location,$rootScope,$http) {
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
     $scope.refreshStop = global.refresh;
+    $scope.eventsArr = [];
     $scope.getAllEventsPatient = function() {
         let data = 'patientid='+global.patientid;
+        console.warn('fetching')
         $http(
             {url: global.url+'/allevents',
             method: 'POST',
@@ -138,10 +145,69 @@ app.controller('mainController', function($scope,$location,$rootScope,$http) {
             data:data
         }).then(resp => {
             res = resp.data;
+            console.warn('thisss')
+            console.warn(res)
             if (res) {
-                $scope.eventsArr = res;
                 $rootScope.showSidebar = true;
-                eventsStore.updateEventsStore(res);
+                $scope.eventsArr = res;
+                // eventsStore.updateEventsStore(res);
+            } else {
+                $scope.wrongpass = 'Error occurred while Adding assignee';
+            }
+        });
+
+    };
+});
+
+app.controller('profileController', function($scope,$location,$rootScope,$http) {
+    console.warn('profile controller called')
+    $rootScope.showSidebar = true;
+    $rootScope.settingsOption = true;
+    $scope.refreshStop = global.refresh;
+    $scope.eventsArr = [];
+    $scope.getProfile = function() {
+        let data = 'patientid='+global.patientid;
+        console.warn('fetching')
+        $http(
+            {url: global.url+'/get_profile',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data:data
+        }).then(resp => {
+            res = resp.data;
+            console.warn('get profiles ...')
+            console.warn(res)
+            if (res) {
+                $rootScope.showSidebar = true;
+                // eventsStore.updateEventsStore(res);
+                $scope.wrongpass = 'Updated successfully'
+            } else {
+                $scope.wrongpass = 'Error occurred';
+            }
+        });
+
+    };
+
+    $scope.updateProfile = function() {
+        let data = 'asugar='+$scope.profile.asugar + '&bsugar=' + $scope.profile.bsugar + '&sbp=' + $scope.profile.sbp + '&dbp=' + $scope.profile.dbp + '&bmi=' + $scope.profile.bmi + '&temp='
+         + $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender;
+        console.warn('fetching')
+        $http(
+            {url: global.url+'/update_profile',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data:data
+        }).then(resp => {
+            res = resp.data;
+            console.warn('update profiles ...')
+            console.warn(res)
+            if (res) {
+                $rootScope.showSidebar = true;
+                // eventsStore.updateEventsStore(res);
             } else {
                 $scope.wrongpass = 'Error occurred while Adding assignee';
             }
@@ -154,9 +220,10 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
     console.warn('events controller called')
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
+    $scope.eventsArr = [];
     $scope.refreshStop = global.refresh;
-    $scope.getAlEventsPatient = function() {
-        let data = 'username='+$scope.assignee_form.username+'&patientid='+global.patientid;
+    $scope.getAllEventsPatient = function() {
+        let data = 'patientid='+global.patientid;
         $http(
             {url: global.url+'/allevents',
             method: 'POST',
@@ -167,11 +234,12 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
         })
         .then(resp=>{
             res=resp.data;
+            console.warn(res)
             if(res){
                 $scope.wrongpass = 'Success';
                 $rootScope.showSidebar = true;
-            }
-            else{
+                $scope.eventsArr = res;
+            } else{
                 $scope.wrongpass = 'Error occurred while Adding assignee';
             }
         });

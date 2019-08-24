@@ -1,6 +1,22 @@
-evnts
-<div style="min-height: 400px;">
-
+<div style="min-height: 400px;" data-ng-init="getAllEventsPatient()">
+    <table>
+        <thead>
+          <tr>
+            <th>Sl No.</th>
+            <th>Disease / Problem</th>
+            <th>Duration of the disease</th>
+            <th>Medicine(s) Taken</th>
+          </tr>
+        </thead>
+        <tbody data-ng-repeat="event in eventsArr; ">
+          <tr>
+              <td>{{$index + 1}}</td>
+              <td>{{ event.Event }}</td>
+              <td>{{ event.TimeSFO }}</td>
+              <td>{{ event.medicine.join(',') }}</td>
+          </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="add-events-style">
