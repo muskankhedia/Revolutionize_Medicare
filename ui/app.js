@@ -118,6 +118,7 @@ app.controller('primaryController', function($scope,$location,$rootScope,$http) 
             console.log('res is ', res)
             if (true) {
                 $location.path('/home');
+                global.patientid = patientid;
                 $rootScope.showSidebar = true;
                 $rootScope.settingsOption = true;
             } else {
@@ -192,7 +193,7 @@ app.controller('profileController', function($scope,$location,$rootScope,$http) 
 
     $scope.updateProfile = function() {
         let data = 'asugar='+$scope.profile.asugar + '&bsugar=' + $scope.profile.bsugar + '&sbp=' + $scope.profile.sbp + '&dbp=' + $scope.profile.dbp + '&bmi=' + $scope.profile.bmi + '&temp='
-         + $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender;
+         + $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender + '&patientid=' + global.patientid;
         console.warn('fetching')
         $http(
             {url: global.url+'/update_profile',
@@ -303,6 +304,30 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
             } else {
                 $scope.wrongpass = 'Error occurred while Adding Events';
             }
+        });
+    }
+
+    $scope.getSuggestions = function() {
+        let data = 'disease=' + $scope.event.disease + '&patientid=' + global.patientid;
+        $http({
+            url: global.url+'/suggestmedicines',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: data
+        })
+        .then(resp => {
+            let res = resp.data;
+            console.warn('get suggestions ...')
+            console.warn(res)
+            // if (res) {
+            //     $scope.wrongpass = 'Success';
+            //     $rootScope.showSidebar = true;
+            //     $location.path('/events');
+            // } else {
+            //     $scope.wrongpass = 'Error occurred while Adding Events';
+            // }
         });
     }
 });

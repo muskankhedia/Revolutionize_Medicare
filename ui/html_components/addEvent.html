@@ -8,6 +8,9 @@
         Disease : <input type="text" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 18%;text-align: center;margin-top: 20px;"
             ng-model="event.disease" required
         /><br/>
+        <div data-ng-if="event.disease.length > 0">
+            <button class="btn btn-success" data-ng-click="getSuggestions()">Show Medicine Suggestions</button>
+        </div>
         Medicine : <input type="text" style="background-color: #F6FFFF;border-radius: 10px; margin-left: 17%;text-align: center;margin-top: 20px;"
             ng-model="event.medicine" required
         /><br/>
