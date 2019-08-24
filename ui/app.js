@@ -169,7 +169,7 @@ app.controller('profileController', function($scope,$location,$rootScope,$http) 
         let data = 'patientid='+global.patientid;
         console.warn('fetching')
         $http(
-            {url: global.url+'/getProfile',
+            {url: global.url+'/get_profile',
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -177,7 +177,33 @@ app.controller('profileController', function($scope,$location,$rootScope,$http) 
             data:data
         }).then(resp => {
             res = resp.data;
-            console.warn('profiles')
+            console.warn('get profiles ...')
+            console.warn(res)
+            if (res) {
+                $rootScope.showSidebar = true;
+                // eventsStore.updateEventsStore(res);
+                $scope.wrongpass = 'Updated successfully'
+            } else {
+                $scope.wrongpass = 'Error occurred';
+            }
+        });
+
+    };
+
+    $scope.updateProfile = function() {
+        let data = 'asugar='+$scope.profile.asugar + '&bsugar=' + $scope.profile.bsugar + '&sbp=' + $scope.profile.sbp + '&dbp=' + $scope.profile.dbp + '&bmi=' + $scope.profile.bmi + '&temp='
+         + $scope.profile.temp + '&pulse=' + $scope.profile.pulse + '&resp=' + $scope.profile.resp + '&gender=' + $scope.profile.gender;
+        console.warn('fetching')
+        $http(
+            {url: global.url+'/update_profile',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data:data
+        }).then(resp => {
+            res = resp.data;
+            console.warn('update profiles ...')
             console.warn(res)
             if (res) {
                 $rootScope.showSidebar = true;
@@ -213,8 +239,7 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
                 $scope.wrongpass = 'Success';
                 $rootScope.showSidebar = true;
                 $scope.eventsArr = res;
-            }
-            else{
+            } else{
                 $scope.wrongpass = 'Error occurred while Adding assignee';
             }
         });

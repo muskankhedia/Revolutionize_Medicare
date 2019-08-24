@@ -2,11 +2,17 @@
     <div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
         <form action="" data-ng-submit="addAssignee()" style="height:1000px;">
             <h4> Profile </h4><hr>
-            Sugar : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.sugar" required
+            Sugar (before food) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.bsugar" required
             /><br/>
-            Blood Pressure : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.bp" required
+            Sugar (after food) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.asugar" required
+            /><br/>
+            Blood Pressure (systolic) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.sbp" required
+            /><br/>
+            Blood Pressure (diastolic) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
+                ng-model="profile.dbp" required
             /><br/>
             Body Mass Index : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
                 ng-model="profile.bmi" required
