@@ -29,7 +29,7 @@
             Gender : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
                 ng-model="profile.gender" required
             /><br/> <br>
-           <button type="submit" class="btn btn-success" > Update </button>
+           <button type="submit" class="btn btn-success" data-ng-click="updateProfile()"> Update </button>
            <a href="/?#!/home"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a> 
             <span>{{wrongpass}}</span>
         </form>
