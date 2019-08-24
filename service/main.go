@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"./controllers"
+	"github.com/muskankhedia/Revolutionize_Medicare/service/controllers"
 )
 
 func init() {
