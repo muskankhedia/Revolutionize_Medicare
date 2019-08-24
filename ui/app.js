@@ -3,7 +3,7 @@ var app = angular.module('pt_management', ['ngRoute']);
 var global = {
     url: 'http://0.0.0.0:9000',
     username: 'default',
-    patientid: '0'
+    patientid: '1'
 };
 
 app.config(function($routeProvider,$locationProvider) {
@@ -308,7 +308,7 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
     }
 
     $scope.getSuggestions = function() {
-        let data = 'disease=' + $scope.event.disease + '&patientid=' + global.patientid;
+        let data = 'event=' + $scope.event.disease + '&patientid=' + global.patientid;
         $http({
             url: global.url+'/suggestmedicines',
             method: 'POST',
@@ -321,8 +321,14 @@ app.controller('eventsController', function($scope,$location,$rootScope,$http) {
             let res = resp.data;
             console.warn('get suggestions ...')
             console.warn(res)
-            // if (res) {
-            //     $scope.wrongpass = 'Success';
+            // if (res.length) {
+            //     let min = {
+            //         medicine: res[0].Medicine,
+            //         prob: res[0].Probability
+            //     };
+            //     for(let x in res) {
+            //         if (min[prob])
+            //     }
             //     $rootScope.showSidebar = true;
             //     $location.path('/events');
             // } else {
