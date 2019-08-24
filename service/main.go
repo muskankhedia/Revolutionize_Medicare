@@ -18,6 +18,7 @@ import (
 
 
 func init() {
+	controllers.PatientIDsMatch = []int{}
 	log.SetPrefix("LOG: ")
 	log.SetFlags(log.Ldate | log.Lmicroseconds | log.Llongfile)
 	log.Println("init started")

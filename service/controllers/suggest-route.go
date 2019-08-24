@@ -10,6 +10,8 @@ import (
 var (
 	//Chain is the global block chain used for processing
 	Chain []EventBlock
+	//PatientIDsMatch global patient IDs matching the first step
+	PatientIDsMatch []int
 )
 
 //Event contains event details
@@ -53,8 +55,11 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 	for i := 0; i < len(data); i++ {
 		if strings.Compare(strings.ToLower(event), strings.ToLower(data[i].Event)) == 0 {
 			list = append(list, data[i])
+			PatientIDsMatch = append(PatientIDsMatch, data[i].PatientID)
 		}
 	}
+	fmt.Println("list is *****************")
+	fmt.Println(list)
 
 	if len(list) != 0 {
 		var SuccessList []SuccessRate
@@ -99,6 +104,7 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err)
 		}
+		Learning(PatientIDsMatch)
 		w.Write(j)
 
 	} else {
