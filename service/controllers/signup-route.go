@@ -21,7 +21,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// appending the new user to the list of users
-	jsonByteValue, err := ioutil.ReadFile("users.json")
+	jsonByteValue, err := ioutil.ReadFile("../datastore/users.json")
 	if err != nil {
 		panic(err)
 	}
@@ -32,7 +32,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 	form.PatientID = len(users) + 1
 	users = append(users, form)
 	result, err := json.Marshal(users)
-	err = ioutil.WriteFile("users.json", result, 0777)
+	err = ioutil.WriteFile("../datastore/users.json", result, 0777)
 	if err != nil {
 		panic(err)
 	}
@@ -42,11 +42,11 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 
 // SignupForm contains the details entered by the user in the signup form
 type SignupForm struct {
-	PatientID  int    `schema:"patientid"`
-	Name       string `schema:"name"`
-	Email      string `schema:"email"`
-	Age        string `schema:"age"`
-	DOB        string `schema:"dob"`
-	BloodGroup string `schema:"bloodgroup"`
-	BirthType  string `schema:"birthtype"`
+	PatientID  int    `schema:"patientid" json:"PatientID"`
+	Name       string `schema:"name" json:"Name"`
+	Email      string `schema:"email" json:"Email"`
+	Age        string `schema:"age" json:"Age"`
+	DOB        string `schema:"dob" json:"Dob"`
+	BloodGroup string `schema:"bloodgroup" json:"BloodGroup"`
+	BirthType  string `schema:"birthtype" json:"BirthType"`
 }

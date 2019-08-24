@@ -1,0 +1,11 @@
+[
+    {
+        "PatientID": 0,
+        "Name": "Test",
+        "Email": "test@gmail.com",
+        "Age": "21",
+        "DOB": "01/04/1999",
+        "BloodGroup": "A+",
+        "BirthType": "Normal"
+    }
+]

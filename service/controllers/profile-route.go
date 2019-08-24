@@ -21,7 +21,7 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) []byte {
 	if err := parseForm(r, &form); err != nil {
 		panic(err)
 	}
-	jsonByteValue, err := ioutil.ReadFile("users.json")
+	jsonByteValue, err := ioutil.ReadFile("../datastore/users.json")
 	if err != nil {
 		panic(err)
 	}
