@@ -1,37 +1,66 @@
-<div data-ng-init="getProfile()">
-    <div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
-        <form action="" data-ng-submit="addAssignee()" style="height:1000px;">
-            <h4> Profile </h4><hr>
-            Sugar (before food) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.bsugar" required
-            /><br/>
-            Sugar (after food) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.asugar" required
-            /><br/>
-            Blood Pressure (systolic) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.sbp" required
-            /><br/>
-            Blood Pressure (diastolic) : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.dbp" required
-            /><br/>
-            Body Mass Index : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.bmi" required
-            /><br/>
-            Temperature : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.temp" required
-            /><br/>
-            Pulse : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.pulse" required
-            /><br/>
-            Respiration Rate: <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.resp" required
-            /><br/>
-            Gender : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-                ng-model="profile.gender" required
-            /><br/> <br>
-           <button type="submit" class="btn btn-success" data-ng-click="updateProfile()"> Update </button>
-           <a href="/?#!/home"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a> 
-            <span>{{wrongpass}}</span>
-        </form>
+
+<div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <div data-ng-init="getProfile()">
+        <div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Update your Medical Profile</h3> 
+                </div>
+                <div class="panel-body">
+                    <form action="" data-ng-submit="addAssignee()" >
+                        <div class="form-group">
+                            <label for="bsugar">Sugar (before food)</label>
+                            <input type="text" class="form-control" name="bsugar" placeholder="Enter Sugar Level (before food)" ng-model="profile.bsugar" required/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="asugar">Sugar (after food)</label>
+                            <input type="text" class="form-control" name="asugar" placeholder="Enter Sugar Level (after food)" ng-model="profile.asugar" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sbp">Blood Pressure (systolic)</label>
+                            <input type="text" class="form-control" name="sbp" placeholder="Enter systolic value of BP" ng-model="profile.sbp" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dbp">Blood Pressure (diastolic)</label>
+                            <input type="text" class="form-control" name="dbp" placeholder="Enter diastolic value of BP" ng-model="profile.dbp" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bmi">Body Mass Index</label>
+                            <input type="text" class="form-control" name="bmi" placeholder="Enter value of BMI" ng-model="profile.bmi" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="temp">Temperature</label>
+                            <input type="text" class="form-control" name="temp" placeholder="Enter body temperature (in Fahrenheit)" ng-model="profile.temp" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pulse">Pulse</label>
+                            <input type="text" class="form-control" name="pulse" placeholder="Enter pulse rate" ng-model="profile.pulse" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="resp">Respiration</label>
+                            <input type="text" class="form-control" name="resp" placeholder="Enter rate of Respiration" ng-model="profile.resp" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <input type="text" class="form-control" name="gender" placeholder="Enter gender" ng-model="profile.gender" required>
+                        </div>
+                                        
+                        <button type="submit" class="btn btn-success" data-ng-click="updateProfile()"> Update </button>
+                        <a href="/?#!/home"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a> 
+                        <span>{{wrongpass}}</span>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
     </div>
-</div>
