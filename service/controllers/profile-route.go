@@ -8,7 +8,7 @@ import (
 )
 
 //ProfileHandler returns the profile details of the patient id
-func ProfileHandler(w http.ResponseWriter, r *http.Request) []byte {
+func ProfileHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("In ProfileHandler")
 
 	// prevent CORS error
@@ -45,6 +45,7 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) []byte {
 	if err != nil {
 		panic(err)
 	}
-	return ([]byte(res))
+	// return ([]byte(res))
+	w.Write(res)
 
 }
