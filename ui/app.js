@@ -1,7 +1,7 @@
 var app = angular.module('pt_management', ['ngRoute']);
 
 var global = {
-    url: 'http://0.0.0.0:5000',
+    url: 'http://0.0.0.0:9000',
     username: 'default',
     patientid: '1'
 };
