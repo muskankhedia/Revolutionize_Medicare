@@ -67,9 +67,11 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 				if strings.Compare(strings.ToLower(list[i].Medicine[0]), strings.ToLower(SuccessList[j].Medicine)) == 0 {
 
 					if list[i].Success == true {
-						SuccessList[j].SuccessProp = SuccessList[j].SuccessProp + 1/float64(len(SuccessList))
+						fmt.Println(SuccessList[j].SuccessProp)
+						SuccessList[j].SuccessProp = SuccessList[j].SuccessProp + 1
 					} else if list[i].Success == false {
-						SuccessList[j].SuccessProp = SuccessList[j].SuccessProp - 1/float64(len(SuccessList))
+						fmt.Println(SuccessList[j].SuccessProp)
+						SuccessList[j].SuccessProp = (SuccessList[j].SuccessProp - 1)
 					}
 					count++
 
@@ -83,12 +85,16 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if list[i].Success == true {
-					suclist.SuccessProp = 1 / float64(len(list))
+					suclist.SuccessProp = 1 
 				} else if list[i].Success == false {
-					suclist.SuccessProp = -1 / float64(len(list))
+					suclist.SuccessProp = -1 
 				}
 				SuccessList = append(SuccessList, suclist)
 			}
+		}
+
+		for i := 0; i < len(SuccessList); i++ {
+			SuccessList[i].SuccessProp = SuccessList[i].SuccessProp/float64(len(list))
 		}
 
 		j, err := json.Marshal(SuccessList)
