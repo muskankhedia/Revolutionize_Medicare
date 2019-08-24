@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"./controllers"
 )
 
 func init() {
@@ -27,10 +28,10 @@ func routeHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/test", routeHandler).Methods("GET")
-	r.HandleFunc("/test", routeHandler).Methods("POST")
+	r.HandleFunc("/login", controllers.LoginHandler)
+	r.HandleFunc("/profile", controllers.ProfileHandler)
 
 	r.NotFoundHandler = http.HandlerFunc(error404)
 
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":9000", r))
 }
