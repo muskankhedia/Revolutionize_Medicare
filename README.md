@@ -70,12 +70,12 @@ The doctor can also judge the effectiveness of a particular medicine on similar 
 ## :rocket: Future Scope
 
 ### Things to be implemented
-   [ ] Reminder of dosage of patients
-   [ ] Reminder to patient for scheduled checkup
-   [ ] Complete support for smart medicine suggestion considering `allergies`
-   [ ] Graphical view of user Medical History
-   [ ] Vaccination tracker for newborn children
-   [ ] Feedback loop on diagnosis, thus validating both the Doctor and the medication
+ - [ ] Reminder of dosage of patients
+ - [ ] Reminder to patient for scheduled checkup
+ - [ ] Complete support for smart medicine suggestion considering `allergies`
+ - [ ] Graphical view of user Medical History
+ - [ ] Vaccination tracker for newborn children
+ - [ ] Feedback loop on diagnosis, thus validating both the Doctor and the medication
 
 ## :gem: Contributors
 Developed with :hearts: by team CodeZero.
