@@ -8,14 +8,9 @@ var global = {
 
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
-        .when("/login/", {
-            templateUrl: './html_components/welcome.html',
-            controller: 'loginController',
-            title: 'Login | SignUp',
-        })
         .when("/login", {
             templateUrl: './html_components/login.html',
-            controller: 'loginController',
+            controller: 'primaryController',
             title: 'Login | SignUp',
         })
         .when('/home', {
@@ -24,7 +19,7 @@ app.config(function($routeProvider, $locationProvider) {
             title: 'Dashboard',
         })
         .when('/', {
-            templateUrl: './html_components/login.html',
+            templateUrl: './html_components/welcome.html',
             controller: 'primaryController',
             title: 'Dashboard',
         })
@@ -38,11 +33,11 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'eventsController',
             title: 'Events',
         })
-        .when('/login', {
-            templateUrl: './html_components/login.html',
-            controller: 'primaryController',
-            title: 'Login',
-        })
+        // .when('/login', {
+        //     templateUrl: './html_components/login.html',
+        //     controller: 'primaryController',
+        //     title: 'Login',
+        // })
         .when('/signUp', {
             templateUrl: './html_components/signup.html',
             controller: 'primaryController',
