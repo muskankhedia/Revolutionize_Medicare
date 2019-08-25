@@ -246,6 +246,7 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
     $scope.suggestedMedicineProb = 0;
     $scope.eventsArr = [];
     $scope.event = {};
+    $scope.successRate = '';
     $scope.refreshStop = global.refresh;
     $scope.getAllEventsPatient = function() {
         let data = 'patientid=' + global.patientid;
@@ -386,5 +387,27 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
                     $scope.wrongpass = 'Error occurred while Adding Events';
                 }
             });
+    }
+
+    $scope.getSuccessRateDeep = function() {
+        let data = 'patientid=' + global.patientid + '&medicine=' + $scope.event.medicine;
+        $http({
+            url: global.url + '/get_success_rate',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: data
+        })
+        .then(resp => {
+            let res = resp.data;
+            console.warn('get success rate ...')
+            console.warn(res)
+            if (res) {
+                $scope.successRate = res;
+            } else {
+                $scope.wrongpass = 'Error occurred while Adding Events';
+            }
+        });
     }
 });
