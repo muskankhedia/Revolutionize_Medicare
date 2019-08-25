@@ -1,16 +1,17 @@
 package controllers
 
 import (
-	dep "github.com/patrikeh/go-deep"
-	train "github.com/patrikeh/go-deep/training"
-	"io/ioutil"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+
+	dep "github.com/patrikeh/go-deep"
+	train "github.com/patrikeh/go-deep/training"
 )
 
 type dataStr struct {
 	nodeInput []float64
-	output []float64
+	output    []float64
 }
 
 func loadJSONProfile() []PatientProfile {
@@ -47,7 +48,7 @@ func Learning(x []PatientIDsMatch) {
 	profiles := getMatchingProfiles(x)
 	fmt.Println("matching profiles below")
 	fmt.Println(profiles)
-	
+
 	var data train.Examples
 	for _, inst := range profiles {
 
@@ -83,12 +84,12 @@ func Learning(x []PatientIDsMatch) {
 	}
 
 	net := dep.NewNeural(&dep.Config{
-		Inputs: 8,
-		Layout: []int{8,8,8,1},
+		Inputs:     8,
+		Layout:     []int{8, 8, 8, 1},
 		Activation: dep.ActivationLinear,
-		Mode: dep.ModeBinary,
-		Weight: dep.NewNormal(0.1, 0.1),
-		Bias: true,
+		Mode:       dep.ModeBinary,
+		Weight:     dep.NewNormal(0.1, 0.1),
+		Bias:       true,
 	})
 
 	optimizer := train.NewSGD(0.05, 0.1, 1e-6, true)
