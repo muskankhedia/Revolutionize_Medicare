@@ -5,7 +5,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/muskankhedia/Revolutionize_Medicare.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/muskankhedia/Revolutionize_Medicare/stargazers/) [![GitHub forks](https://img.shields.io/github/forks/muskankhedia/Revolutionize_Medicare.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/muskankhedia/Revolutionize_Medicare/network/) [![GitHub watchers](https://img.shields.io/github/watchers/muskankhedia/Revolutionize_Medicare.svg?style=social&label=Watch&maxAge=2592000)](https://GitHub.com/muskankhedia/Revolutionize_Medicare/watchers/)
 
-Medicare is an application that aims to modernize and revolutionize the way that Healthcare works in India. It reduces the information gap between a patient and a doctor, reducing the chances of wrong diagnosis significantly. It helps to simplify the complex task of choosing medication and other patient related decisions with the help of Deep learning. The crucial patient records (i.e., his medical history) is stored using a blockchain.
+Medicare is an application that aims to modernize and revolutionize the way that Healthcare works in India. It reduces the information gap between a patient and a doctor, significantly reducing the chances of wrong diagnosis. It helps to simplify the complex task of choosing medication and other patient related decisions with the help of Deep learning. Our model considers information like the patient's record of previous ailments, his Sugar level, Blood Pressure, BMI, TPR, etc to smartly suggest medicines. The crucial patient records (i.e., his medical history) is stored using a blockchain in order to be secure, scalable and fault tolerant.
 
 ## :minidisc: Installation instructions
 You must have [Go](https://golang.org/) and [npm](https://www.npmjs.com/) installed in your computer. Then follow these steps:
@@ -62,11 +62,23 @@ The doctor can also judge the effectiveness of a particular medicine on similar 
 ## :wrench: Technology Stack
 * **Backend** Go
 * **Front-end** AngularJS
+* **Database** JSON-db (in-memory)
 * `Deep Learning` model used to predict the success rate of a medicine with respect to a particular disease.
-* A `Block Chain` is used to store the medical history of each Patient.
+* `Block Chain` is used to store the medical history of each Patient.
+* Hosted using virtual machines deployed at `AWS cloud` at [link](http://54.237.215.120:8080) and scaled up using `Docker` and `Kubernetes`.
+
+## :rocket: Future Scope
+
+### Things to be implemented
+   [ ] Reminder of dosage of patients
+   [ ] Reminder to patient for scheduled checkup
+   [ ] Complete support for smart medicine suggestion considering `allergies`
+   [ ] Graphical view of user Medical History
+   [ ] Vaccination tracker for newborn children
+   [ ] Feedback loop on diagnosis, thus validating both the Doctor and the medication
 
 ## :gem: Contributors
-
+Developed with :hearts: by team CodeZero.
 1. [Muskan Khedia](https://github.com/muskankhedia) - Core Developer, Maintainer
 2. [Harkishen Singh](https://github.com/Harkishen-Singh) - Core Developer, Maintainer
 3. [C. Anirudh](https://github.com/C-Anirudh) - Developer
