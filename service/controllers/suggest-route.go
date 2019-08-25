@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"strconv"
 )
 
 var (
@@ -85,10 +86,11 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 					if list[i].Success == true {
 						fmt.Println(SuccessList[j].SuccessProp)
 						SuccessList[j].SuccessProp = SuccessList[j].SuccessProp + 1
-					} else if list[i].Success == false {
-						fmt.Println(SuccessList[j].SuccessProp)
-						SuccessList[j].SuccessProp = (SuccessList[j].SuccessProp - 1)
-					}
+					} 
+					// else if list[i].Success == false {
+					// 	// fmt.Println(SuccessList[j].SuccessProp)
+					// 	// SuccessList[j].SuccessProp = (SuccessList[j].SuccessProp - 1)
+					// }
 					count++
 
 				}
@@ -102,15 +104,18 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 
 				if list[i].Success == true {
 					suclist.SuccessProp = 1 
-				} else if list[i].Success == false {
-					suclist.SuccessProp = -1 
-				}
+				} 
+				// else if list[i].Success == false {
+				// 	suclist.SuccessProp = -1 
+				// }
 				SuccessList = append(SuccessList, suclist)
 			}
 		}
 
 		for i := 0; i < len(SuccessList); i++ {
-			SuccessList[i].SuccessProp = SuccessList[i].SuccessProp/float64(len(list))
+			j := fmt.Sprintf("%.2f", SuccessList[i].SuccessProp/float64(len(list)))
+			value, _ := strconv.ParseFloat(j, 64)
+			SuccessList[i].SuccessProp = value
 		}
 
 		j, err := json.Marshal(SuccessList)

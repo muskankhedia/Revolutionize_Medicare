@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"strings"
 	"os"
+	"strconv"
 	// "encoding/json"
 
 	dep "github.com/patrikeh/go-deep"
@@ -139,6 +140,9 @@ func Learning(x []PatientIDsMatch, medicine string, pid int) float64 {
 	// fmt.Println(net.Predict([]float64{80, 120, 12, 80, 22, 97, 72, 18}))
 	var deepRes []float64
 	deepRes = net.Predict([]float64{pD.Bmi, pD.BpD, pD.BpS, pD.Pulse, pD.Resp, pD.SugarAF, pD.SugarBF, pD.Temp})
-	return deepRes[0]
+	fmt.Println(deepRes[0])
+	i := fmt.Sprintf("%.2f", deepRes[0])
+	value, _ := strconv.ParseFloat(i, 64)
+	return value
 
 }
