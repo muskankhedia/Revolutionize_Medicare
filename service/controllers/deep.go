@@ -123,8 +123,8 @@ func Learning(x []PatientIDsMatch, medicine string, pid int) float64 {
 	net := dep.NewNeural(&dep.Config{
 		Inputs:     8,
 		Layout:     []int{8, 8, 8, 1},
-		Activation: dep.ActivationLinear,
-		Mode:       dep.ModeBinary,
+		Activation: dep.ActivationSigmoid,
+		Mode:       dep.ModeDefault,
 		Weight:     dep.NewNormal(0.1, 0.1),
 		Bias:       true,
 	})
