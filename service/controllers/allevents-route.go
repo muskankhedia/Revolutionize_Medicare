@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -53,7 +54,7 @@ func AllEventsHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-//UpdateSuccessHandler Updates the success 
+//UpdateSuccessHandler Updates the success
 func UpdateSuccessHandler(w http.ResponseWriter, r *http.Request) {
 
 	// prevent CORS error
@@ -82,9 +83,9 @@ func UpdateSuccessHandler(w http.ResponseWriter, r *http.Request) {
 	for i := 0; i < len(data); i++ {
 
 		if eventid == data[i].EventID {
-			data[i].Success =  success
+			data[i].Success = success
 			break
-		} 
+		}
 	}
 
 	result, err := json.Marshal(data)
@@ -95,4 +96,14 @@ func UpdateSuccessHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte(`success field updated`))
 
+}
+
+// GetSuccessRateHandler returns the success rate of a medicine for a particular patient
+func GetSuccessRateHandler(w http.ResponseWriter, r *http.Request) {
+	log.Println("At GetSuccessRate route")
+
+	// prevent CORS error
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	
 }

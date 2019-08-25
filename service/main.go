@@ -1,21 +1,20 @@
 package main
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
-	"crypto/sha256"
-	"io/ioutil"
 	"os"
-	"encoding/json"
-	"encoding/hex"
-	"github.com/gorilla/mux"
-	"strings"
 	"strconv"
+	"strings"
+
+	"github.com/gorilla/mux"
 	"github.com/muskankhedia/Revolutionize_Medicare/service/controllers"
 )
-
-
 
 func init() {
 	// controllers.PatientIDsMatch = []int{}
@@ -52,7 +51,7 @@ func init() {
 	var block controllers.EventBlock
 
 	// copying
-	for i:=0; i< len(data); i++ {
+	for i := 0; i < len(data); i++ {
 		block.Event = data[i].Event
 		block.PatientID = data[i].PatientID
 		block.TimeSFO = data[i].TimeSFO
@@ -62,7 +61,7 @@ func init() {
 	}
 
 	// making hashes
-	for i:=0; i< len(data); i++ {
+	for i := 0; i < len(data); i++ {
 		var data string
 		if i == 0 {
 			data = controllers.Chain[i].Event + string(controllers.Chain[i].PatientID) + string(controllers.Chain[i].TimeSFO) + strconv.FormatBool(controllers.Chain[i].Success) + strings.Join(controllers.Chain[i].Medicine, ",")
@@ -88,6 +87,7 @@ func main() {
 	r.HandleFunc("/allevents", controllers.AllEventsHandler)
 	r.HandleFunc("/suggestmedicines", controllers.SuggestHandler)
 	r.HandleFunc("/update_Success", controllers.UpdateSuccessHandler)
+	r.HandleFunc("/get_success_rate", controllers.GetSuccessRateHandler)
 
 	r.NotFoundHandler = http.HandlerFunc(error404)
 
