@@ -18,6 +18,7 @@ var (
 type PatientIDsMatch struct {
 	ID int
 	Success bool
+	Medicine string
 }
 
 //Event contains event details
@@ -65,6 +66,7 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 			inst := PatientIDsMatch{
 				ID: data[i].PatientID,
 				Success: data[i].Success,
+				Medicine: data[i].Medicine[0],
 			}
 			PatientMatch = append(PatientMatch, inst)
 		}

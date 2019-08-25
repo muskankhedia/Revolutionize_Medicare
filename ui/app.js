@@ -387,4 +387,37 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
                 }
             });
     }
+
+    $scope.getSuccessRateDeep = function() {
+        let data = 'patientid=' + global.patientid + '&medicine=' + $scope.event.medicine;
+        $http({
+            url: global.url + '/get_success_rate',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: data
+        })
+        .then(resp => {
+            let res = resp.data;
+            console.warn('get success rate ...')
+            console.warn(res)
+            // if (res.length) {
+            //     let max = {
+            //         medicine: res[0].Medicine,
+            //         prob: res[0].Probability
+            //     };
+            //     for (let x in res) {
+            //         if (max['prob'] < res[x]['prob']) {
+            //             max['prob'] = res[x]['prob'];
+            //             max['medicine'] = res[x]['medicine'];
+            //         }
+            //     }
+            //     $scope.suggestedMedicine = max['medicine'];
+            //     $scope.suggestedMedicineProb = max['prob'];
+            // } else {
+            //     $scope.wrongpass = 'Error occurred while Adding Events';
+            // }
+        });
+    }
 });

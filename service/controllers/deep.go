@@ -56,7 +56,6 @@ func Learning(x []PatientIDsMatch) {
 		for _, x := range PatientMatch {
 			if x.ID == inst.PatientID {
 				success = x.Success
-				fmt.Println("this (((((((((((((((((")
 				break
 			}
 		}
@@ -92,7 +91,6 @@ func Learning(x []PatientIDsMatch) {
 	})
 
 	optimizer := train.NewSGD(0.05, 0.1, 1e-6, true)
-	// params: optimizer, verbosity (print stats at every 50th iteration)
 	trainer := train.NewTrainer(optimizer, 50)
 
 	trains, heldout := data.Split(0.5)
