@@ -24,8 +24,8 @@ app.config(function($routeProvider, $locationProvider) {
             title: 'Dashboard',
         })
         .when('/', {
-            templateUrl: './html_components/dashboard.html',
-            controller: 'mainController',
+            templateUrl: './html_components/login.html',
+            controller: 'primaryController',
             title: 'Dashboard',
         })
         .when('/events', {
