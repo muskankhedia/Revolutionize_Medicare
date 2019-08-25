@@ -7,8 +7,8 @@
 
 Medicare is an application that aims to modernize and revolutionize the way that Healthcare works in India. It reduces the information gap between a patient and a doctor, reducing the chances of wrong diagnosis significantly. It helps to simplify the complex task of choosing medication and other patient related decisions with the help of Deep learning. The crucial patient records (i.e., his medical history) is stored using a blockchain.
 
-## :disc: Installation instructions
-You must have [Go]() and [npm]() installed in your computer. Then follow these steps:
+## :minidisc: Installation instructions
+You must have [Go](https://golang.org/) and [npm](https://www.npmjs.com/) installed in your computer. Then follow these steps:
 
 ```
 go get github.com/muskankhedia/Revolutionize_Medicare
@@ -20,7 +20,19 @@ go get github.com/patrikeh/go-deep
 go get github.com/patrikeh/go-deep/training
 go get github.com/gorilla/mux
 ```
+Install `http-server` by running the command
+```
+npm install -g http-server
+```
 
+Run your http-server by executing the command 
+```
+npm start
+```
+and your Go server by running the following command in your `service` folder
+```
+go run main.go
+```
 
 
 
