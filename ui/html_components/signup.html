@@ -1,33 +1,71 @@
-<div class="" style="margin-top: 10%;text-align:left;"
->
-    <form style="border:2px solid pink;padding: 20px;margin-left: 20%;margin-right: 20%;
-    border-radius: 20px; text-align:center;" data-ng-submit="submitSignUP()" >
-        <h3>Patient Sign Up</h3><hr>
+<div class="container-fluid" style="margin-left:30%;">
+<div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-primary">
+                <br>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Patient Sign Up</h3> 
+                </div>
+                <div class="panel-body">
+                    <form action="" data-ng-submit="submitSignUP()" >
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Enter your full name" ng-model="signup.name" required/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email" ng-model="signup.email" required/>
+                        </div>
 
-        Name : <input type="text" name="name" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;margin-top: 20px;"
-            ng-model="signup.name" required
-        /><br/><br/>
-        Email : <input type="email" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;" 
-        data-ng-model="signup.email" required
-        /><br/><br/>
-        Age : <input type="number" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;" 
-        data-ng-model="signup.age" required
-        /><br/><br/>
-        Date of Birth : <input type="date" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;" 
-        data-ng-model="signup.dob" required
-        /><br/><br/>
-        Blood Group : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;" 
-        data-ng-model="signup.bg" required
-        /><br/><br/>
-        Birth : <input type="text" style="background-color: #F6FFFF;border-radius: 10px;text-align: center;" 
-        data-ng-model="signup.b" required
-        /><br/><br/>
-        <input type="submit" class="btn btn-primary" data-ng-click="handleSignUp()" /><a href="/?#!/login">
-            <button class="btn btn-danger" style="margin-left:20px;" >Back</button>
-        <div data-ng-show="patientid.length !== 0" style="color: black; font-weight: bold;">
-            Patient ID is {{patientid}}. Use this during login. <br>
-            <a href="/?#!/login"><button class="btn btn-primary">Continue</button></a>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control" name="age" placeholder="Enter syour age" ng-model="signup.age" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" class="form-control" name="dob" placeholder="Enter your DOB" ng-model="signup.dob" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bg">Blood Group</label>
+                            <span>
+                                <select name="bg" ng-model="signup.bg">
+                                    <option value="A">A</option>
+                                    <option value="A+">A+</option>
+                                    <option value="B">B</option>
+                                    <option value="B+">B+</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="b">Birth Type</label>
+                            <span>
+                                <select name="b" ng-model="signup.b">
+                                    <option value="C">Caesarean</option>
+                                    <option value="N">Normal</option>
+                                </select>
+                            </span><br><br>
+                        </div>                     
+
+                        <div>                
+                            <input type="submit" class="btn btn-primary" data-ng-click="handleSignUp()" /><a href="/?#!/login">
+                            <button class="btn btn-danger" style="margin-left:20px;" >Back</button>
+         
+                            <div data-ng-show="patientid.length !== 0" style="color: black; font-weight: bold;">
+                                Patient ID is {{patientid}}. Use this during login. <br>
+                                <a href="/?#!/login"><button class="btn btn-primary">Continue</button></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </a>
-    </form>
+    </div>
 </div>
