@@ -117,7 +117,7 @@ func SuggestHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err)
 		}
-		Learning(PatientMatch)
+		// Learning(PatientMatch)
 		w.Write(j)
 
 	} else {

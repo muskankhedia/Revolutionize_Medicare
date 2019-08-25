@@ -246,6 +246,7 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
     $scope.suggestedMedicineProb = 0;
     $scope.eventsArr = [];
     $scope.event = {};
+    $scope.successRate = '';
     $scope.refreshStop = global.refresh;
     $scope.getAllEventsPatient = function() {
         let data = 'patientid=' + global.patientid;
@@ -402,22 +403,11 @@ app.controller('eventsController', function($scope, $location, $rootScope, $http
             let res = resp.data;
             console.warn('get success rate ...')
             console.warn(res)
-            // if (res.length) {
-            //     let max = {
-            //         medicine: res[0].Medicine,
-            //         prob: res[0].Probability
-            //     };
-            //     for (let x in res) {
-            //         if (max['prob'] < res[x]['prob']) {
-            //             max['prob'] = res[x]['prob'];
-            //             max['medicine'] = res[x]['medicine'];
-            //         }
-            //     }
-            //     $scope.suggestedMedicine = max['medicine'];
-            //     $scope.suggestedMedicineProb = max['prob'];
-            // } else {
-            //     $scope.wrongpass = 'Error occurred while Adding Events';
-            // }
+            if (res) {
+                $scope.successRate = res;
+            } else {
+                $scope.wrongpass = 'Error occurred while Adding Events';
+            }
         });
     }
 });

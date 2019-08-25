@@ -106,4 +106,15 @@ func GetSuccessRateHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	
+	r.ParseForm()
+	pid, _ := strconv.Atoi(r.PostFormValue("patientid"))
+	med := r.PostFormValue("medicine")
+
+	x := Learning(PatientMatch, med, pid)
+	fmt.Println("x below .............")
+	fmt.Println(x)
+	w.Write([]byte(strconv.FormatFloat(x, 'f', 6, 64)))
+
 }
+
+
