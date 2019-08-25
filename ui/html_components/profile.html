@@ -1,6 +1,6 @@
 
 <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div >
         <div data-ng-init="getProfile()">
         <div class="" data-ng-init="addinit()"  data-ng-show="!refreshStop">
             <div class="panel panel-primary">
@@ -9,6 +9,8 @@
                 </div>
                 <div class="panel-body">
                     <form action="" data-ng-submit="addAssignee()" >
+                    <div class="row">
+                      <div class="col-md-6">  
                         <div class="form-group">
                             <label for="bsugar">Sugar (before food)</label>
                             <input type="text" class="form-control" name="bsugar" placeholder="Enter Sugar Level (before food)" ng-model="profile.bsugar" required/>
@@ -33,7 +35,8 @@
                             <label for="bmi">Body Mass Index</label>
                             <input type="text" class="form-control" name="bmi" placeholder="Enter value of BMI" ng-model="profile.bmi" required>
                         </div>
-
+                      </div>
+                      <div class="col-md-6">
                         <div class="form-group">
                             <label for="temp">Temperature</label>
                             <input type="text" class="form-control" name="temp" placeholder="Enter body temperature (in Fahrenheit)" ng-model="profile.temp" required>
@@ -53,6 +56,8 @@
                             <label for="gender">Gender</label>
                             <input type="text" class="form-control" name="gender" placeholder="Enter gender" ng-model="profile.gender" required>
                         </div>
+                    </div>
+                    </div>
                                         
                         <button type="submit" class="btn btn-success" data-ng-click="updateProfile()"> Update </button>
                         <a href="/?#!/home"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a> 
