@@ -50,13 +50,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="gender">Gender</label>
-                            <input type="text" class="form-control" name="gender" placeholder="Enter gender" ng-model="profile.gender" required>
+                            <label for="gender">Gender</label><br>
+                            <span>
+                                <select name="gender" ng-model="profile.gender">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </span><br><br>                          
+                        </div>                       
+
+                        <div>                
+                            <button type="submit" class="btn btn-success" data-ng-click="updateProfile()"> Update </button>
+                            <a href="/?#!/home"><button type="button" " class="btn btn-danger"  > Cancel </button></a> 
+                            <span>{{wrongpass}}</span>
                         </div>
-                                        
-                        <button type="submit" class="btn btn-success" data-ng-click="updateProfile()"> Update </button>
-                        <a href="/?#!/home"><button type="button" style="margin-left:10px;" class="btn tbn-red"  > Cancel </button></a> 
-                        <span>{{wrongpass}}</span>
                     </form>
                 </div>
             </div>
