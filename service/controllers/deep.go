@@ -4,6 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"strings"
+	"os"
+	// "encoding/json"
 
 	dep "github.com/patrikeh/go-deep"
 	train "github.com/patrikeh/go-deep/training"
@@ -42,10 +45,21 @@ func getMatchingProfiles(arr []PatientIDsMatch) (matchingProfiles []PatientProfi
 }
 
 //Learning global learning func
-func Learning(x []PatientIDsMatch) {
+func Learning(x []PatientIDsMatch, medicine string, pid int) float64 {
 	fmt.Println("deep patientsmatch")
 	fmt.Println(x)
-	profiles := getMatchingProfiles(x)
+
+	fmt.Println("Medicine:::", medicine)
+
+	var medicineList []PatientIDsMatch
+
+	for i := 0; i < len(x); i++ {
+		if strings.Compare(strings.ToLower(medicine), strings.ToLower(x[i].Medicine)) == 0 {
+			medicineList = append(medicineList, x[i])
+		}
+	}
+
+	profiles := getMatchingProfiles(medicineList)
 	fmt.Println("matching profiles below")
 	fmt.Println(profiles)
 
@@ -57,7 +71,6 @@ func Learning(x []PatientIDsMatch) {
 		for _, x := range PatientMatch {
 			if x.ID == inst.PatientID {
 				success = x.Success
-				fmt.Println("this (((((((((((((((((")
 				break
 			}
 		}
@@ -83,6 +96,30 @@ func Learning(x []PatientIDsMatch) {
 		data = append(data, i)
 	}
 
+	jsonFile, err := os.Open("datastore/profile.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	var patientdataArr []PatientProfile
+	var pD PatientProfile
+	json.Unmarshal(byteValue, &patientdataArr)
+	if err != nil {
+		fmt.Println("err")
+	}
+
+	for i := 0; i < len(patientdataArr); i++ {
+
+		if pid == patientdataArr[i].PatientID {
+			pD = patientdataArr[i]
+			break
+		}
+	}
+
+
 	net := dep.NewNeural(&dep.Config{
 		Inputs:     8,
 		Layout:     []int{8, 8, 8, 1},
@@ -93,12 +130,15 @@ func Learning(x []PatientIDsMatch) {
 	})
 
 	optimizer := train.NewSGD(0.05, 0.1, 1e-6, true)
-	// params: optimizer, verbosity (print stats at every 50th iteration)
 	trainer := train.NewTrainer(optimizer, 50)
 
 	trains, heldout := data.Split(0.5)
 
 	trainer.Train(net, trains, heldout, 10000)
 	fmt.Println("below output")
-	fmt.Println(net.Predict([]float64{80, 120, 12, 80, 22, 97, 72, 18}))
+	// fmt.Println(net.Predict([]float64{80, 120, 12, 80, 22, 97, 72, 18}))
+	var deepRes []float64
+	deepRes = net.Predict([]float64{pD.Bmi, pD.BpD, pD.BpS, pD.Pulse, pD.Resp, pD.SugarAF, pD.SugarBF, pD.Temp})
+	return deepRes[0]
+
 }
