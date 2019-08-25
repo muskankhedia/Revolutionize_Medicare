@@ -77,6 +77,7 @@ app.controller('primaryController', function($scope, $location, $rootScope, $htt
     console.warn('primaryController called')
     $rootScope.showSidebar = false;
     $rootScope.settingsOption = false;
+    $rootScope.showLogOut = false;
     $scope.refreshStop = global.refresh;
     $scope.patientid = '';
     $scope.handleSignUp = function() {
@@ -133,6 +134,7 @@ app.controller('mainController', function($scope, $location, $rootScope, $http) 
     console.warn('assignee controller called')
     $rootScope.showSidebar = true;
     $rootScope.settingsOption = true;
+    $rootScope.showLogOut = true;
     $scope.refreshStop = global.refresh;
     $scope.event = {};
     $scope.eventsArr = [];
