@@ -112,7 +112,7 @@ app.controller('primaryController', function($scope, $location, $rootScope, $htt
         }).then(resp => {
             let res = resp.data;
             console.log('res is ', res)
-            if (res) {
+            if (res === 'true'){
                 console.warn('was', $scope.patientid)
                 global.patientid = $scope.patientid;
                 $location.path('/home');
