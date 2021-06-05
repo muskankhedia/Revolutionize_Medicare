@@ -15,6 +15,15 @@
                         <label for="patientid">Patient ID</label>
                         <input type="number" class="form-control" name="patientid" ng-model="patientid" placeholder="Enter Patient ID" required>
                     </div>
+                    <div class="form-group">
+                        <label for="b">Login by</label>
+                        <span>
+                            <select name="b" ng-model="tldr.rni" class="form-control">
+                                <option value="Doctor">Doctor</option>
+                                <option value="Patient">Patient</option>
+                            </select>
+                        </span>
+                    </div>
                     
                     <button type="submit" class="btn btn-success" data-ng-click="handleLogin()" >Submit</button> &nbsp;
                     <a href="/?#!/signUp"><button type="button" class="btn btn-primary" >Sign Up</button></a>
