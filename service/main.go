@@ -76,6 +76,10 @@ func init() {
 	log.Println("done chain building")
 }
 
+var (
+	port = os.Getenv("PORT")
+)
+
 func main() {
 
 	r := mux.NewRouter()
@@ -91,5 +95,5 @@ func main() {
 
 	r.NotFoundHandler = http.HandlerFunc(error404)
 
-	log.Fatal(http.ListenAndServe(":9000", r))
+	log.Fatal(http.ListenAndServe(":"+port, r))
 }
