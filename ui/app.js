@@ -69,7 +69,7 @@ app.factory('eventsStore', function() {
 });
 
 app.controller('primaryController', function($scope, $location, $rootScope, $http) {
-    console.warn('primaryController called')
+    console.warn('primaryController called3')
     $rootScope.showSidebar = false;
     $rootScope.settingsOption = false;
     $rootScope.showLogOut = false;
@@ -77,7 +77,6 @@ app.controller('primaryController', function($scope, $location, $rootScope, $htt
     $scope.patientid = '';
     $scope.handleSignUp = function() {
         let data = 'name=' + $scope.signup.name + '&email=' + $scope.signup.email + '&age=' + $scope.signup.age + '&dob=' + $scope.signup.dob + '&bg=' + $scope.signup.bg + '&b=' + $scope.signup.b;
-        console.log('data is', data);
         $http({
             url: global.url + '/signup',
             method: 'POST',
@@ -87,10 +86,9 @@ app.controller('primaryController', function($scope, $location, $rootScope, $htt
             data: data
         }).then(resp => {
             let res = resp.data;
-            console.log('resp is ', res)
-            console.log(resp)
             if (res) {
                 $scope.patientid = res;
+                alert(`Patiend ID is ${res}. Use this during login process.`);
                 $rootScope.showSidebar = true;
                 eventsStore.updateEventsStore(res);
             } else {
@@ -113,7 +111,6 @@ app.controller('primaryController', function($scope, $location, $rootScope, $htt
             let res = resp.data;
             console.log('res is ', res)
             if (res === 'true'){
-                console.warn('was', $scope.patientid)
                 global.patientid = $scope.patientid;
                 $location.path('/home');
                 $rootScope.showSidebar = true;

@@ -54,12 +54,11 @@
                             </span>
                         </div><br><br>
                         <div>                
-                            <input type="submit" class="btn btn-primary" data-ng-click="handleSignUp()" /><a href="/?#!/login">
+                            <input type="submit" class="btn btn-primary" data-ng-click="handleSignUp()" />
                             <button class="btn btn-danger" style="margin-left:20px;" >Back</button>
          
-                            <div data-ng-show="patientid.length !== 0" style="color: black; font-weight: bold;">
-                                Patient ID is {{patientid}}. Use this during login. <br>
-                                <a href="/?#!/login"><button class="btn btn-primary">Continue</button></a>
+                            <div data-ng-show="patientid.length !== 0" style="color: black;">
+                                Patient ID is <b>{{patientid}}</b>. Use this during login. <br>
                             </div>
                         </div>
                     </form>
